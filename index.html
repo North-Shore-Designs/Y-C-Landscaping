@@ -180,32 +180,6 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
   border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent);
   transition: background 0.4s ease, border-color 0.4s ease;
 }
-/* Top row: centered prominent logo */
-.brand-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-block: 20px 8px;
-  border-bottom: 1px solid color-mix(in srgb, var(--line) 40%, transparent);
-}
-.brand-hero {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-.brand-hero .brand-logo-img {
-  height: 86px;
-  width: auto;
-  border-radius: 8px;
-  box-shadow: 0 10px 28px -10px rgba(20, 43, 94, 0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.brand-hero:hover .brand-logo-img { transform: translateY(-2px); box-shadow: 0 16px 32px -12px rgba(20, 43, 94, 0.45); }
-@media (max-width: 640px) {
-  .brand-hero .brand-logo-img { height: 64px; }
-  .brand-row { padding-block: 14px 6px; }
-}
-
 .nav {
   display: flex;
   align-items: center;
@@ -226,12 +200,11 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
   height: 52px;
   width: auto;
   display: block;
-  border-radius: 6px;
-  box-shadow: 0 4px 12px -4px rgba(20, 43, 94, 0.35);
+  transition: transform 0.2s ease;
 }
+.brand:hover .brand-logo-img { transform: translateY(-1px); }
 [data-theme="dark"] .brand-logo-img {
-  filter: brightness(1.05) contrast(1.05);
-  box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(232, 194, 102, 0.18);
+  filter: brightness(1.1) drop-shadow(0 0 0.5px rgba(232, 194, 102, 0.4));
 }
 .brand .amp { color: var(--gold); font-style: italic; font-weight: 400; }
 .brand .brand-sub { display: block; font-family: var(--body); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); margin-top: -2px; }
@@ -794,6 +767,133 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
   .proj.lg, .proj.med, .proj.sm { grid-column: span 12; }
 }
 
+/* ────────────────────────── REVIEWS PAGE ────────────────────────── */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+@media (max-width: 720px) { .reviews-grid { grid-template-columns: 1fr; } }
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 34px 32px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  color: var(--ink);
+  text-decoration: none;
+}
+a.review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: var(--rev-color, var(--accent));
+}
+.review-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: var(--rev-color, var(--accent));
+}
+.review-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -30% -50% auto;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--rev-color, var(--accent)) 14%, transparent), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+a.review-card:hover::after { opacity: 1; }
+
+.review-platform {
+  font-family: var(--display);
+  font-size: 1.7rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--rev-color, var(--accent));
+  line-height: 1;
+}
+.review-name {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-mute);
+  font-weight: 700;
+}
+.review-stars {
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  line-height: 1;
+}
+[data-theme="dark"] .review-stars { color: var(--gold-soft); }
+.review-sub {
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+  line-height: 1.55;
+  margin-top: 4px;
+}
+.review-link {
+  margin-top: auto;
+  padding-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--rev-color, var(--accent));
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
+}
+.review-link .arrow { transition: transform 0.25s ease; }
+a.review-card:hover .review-link .arrow { transform: translate(3px, -3px); }
+.review-link-muted { color: var(--ink-mute); font-weight: 700; }
+
+/* platform brand colors */
+.review-yelp        { --rev-color: #D32323; }
+.review-thumbtack   { --rev-color: #009FD9; }
+.review-homeadvisor { --rev-color: #F26522; }
+.review-google      { --rev-color: #4285F4; }
+
+.review-coming-soon {
+  opacity: 0.78;
+  cursor: default;
+}
+.review-coming-soon::before { opacity: 0.55; }
+.review-coming-soon .review-stars { opacity: 0.4; }
+
+.reviews-note {
+  margin-top: 36px;
+  background: color-mix(in srgb, var(--gold) 10%, transparent);
+  border-left: 4px solid var(--gold);
+  border-radius: 12px;
+  padding: 18px 22px;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 16px;
+  align-items: center;
+  max-width: 760px;
+}
+[data-theme="dark"] .reviews-note { background: color-mix(in srgb, var(--gold-soft) 12%, transparent); border-color: var(--gold-soft); }
+.reviews-note .rn-mark {
+  font-family: var(--display);
+  color: var(--gold);
+  font-size: 1.3rem;
+  line-height: 1;
+}
+[data-theme="dark"] .reviews-note .rn-mark { color: var(--gold-soft); }
+.reviews-note p { margin: 0; color: var(--ink-soft); font-size: 0.96rem; }
+
 /* ────────────────────────── ABOUT PAGE ────────────────────────── */
 .about-grid {
   display: grid;
@@ -1280,20 +1380,16 @@ a.mini-card:hover { border-color: var(--accent); transform: translateY(-2px); }
 
 <!-- ──────────── HEADER / NAV ──────────── -->
 <header class="site-header">
-  <!-- Top row: prominent centered logo -->
-  <div class="wrap brand-row">
-    <a href="#home" class="brand brand-hero" data-nav="home" aria-label="Y&amp;C Landscaping &amp; Masonry home">
-      <img src="yc-logo-cropped.png" alt="Y&amp;C Landscaping &amp; Construction" class="brand-logo-img" width="225" height="120" />
-    </a>
-  </div>
-
-  <!-- Bottom row: nav + CTAs -->
   <div class="wrap nav">
+    <a href="#home" class="brand" data-nav="home" aria-label="Y&amp;C Landscaping &amp; Masonry home">
+      <img src="yc-logo-transparent.png" alt="Y&amp;C Landscaping &amp; Construction" class="brand-logo-img" width="225" height="120" />
+    </a>
     <nav aria-label="Primary">
       <ul class="nav-links">
         <li><a class="nav-link" href="#home"      data-nav="home">Home</a></li>
         <li><a class="nav-link" href="#services"  data-nav="services">Services</a></li>
         <li><a class="nav-link" href="#portfolio" data-nav="portfolio">Portfolio</a></li>
+        <li><a class="nav-link" href="#reviews"   data-nav="reviews">Reviews</a></li>
         <li><a class="nav-link" href="#about"     data-nav="about">About</a></li>
         <li><a class="nav-link" href="#visit"     data-nav="visit">Contact</a></li>
       </ul>
@@ -1320,6 +1416,7 @@ a.mini-card:hover { border-color: var(--accent); transform: translateY(-2px); }
   <a href="#home"      data-nav="home">Home</a>
   <a href="#services"  data-nav="services">Services</a>
   <a href="#portfolio" data-nav="portfolio">Portfolio</a>
+  <a href="#reviews"   data-nav="reviews">Reviews</a>
   <a href="#about"     data-nav="about">About</a>
   <a href="#visit"     data-nav="visit">Contact</a>
   <a href="mailto:yandcconstruction1@gmail.com?subject=Free%20Quote%20Request%20%E2%80%94%20Y%26C%20Landscaping" class="btn btn-primary">Free Quote →</a>
@@ -1923,6 +2020,62 @@ a.mini-card:hover { border-color: var(--accent); transform: translateY(-2px); }
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════
+     PAGE: REVIEWS
+════════════════════════════════════════════════════════════════ -->
+<section class="page" id="page-reviews" data-page="reviews">
+  <div class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow fade-up">Reviews</span>
+      <h1 class="fade-up delay-1">What people are <em class="italic">saying</em>.</h1>
+      <p class="lead fade-up delay-2">Read verified reviews of Y&amp;C Landscaping &amp; Masonry from homeowners across the North Shore — on the platforms below.</p>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="reviews-grid">
+        <a class="review-card review-yelp fade-up" href="https://m.yelp.com/biz/y-and-c-landscaping-and-masonry-lynn" target="_blank" rel="noopener noreferrer">
+          <span class="review-platform">Yelp</span>
+          <span class="review-name">Y&amp;C Landscaping &amp; Masonry</span>
+          <span class="review-stars" aria-label="5 stars">★★★★★</span>
+          <span class="review-sub">Verified Yelp reviews from real customers across the North Shore.</span>
+          <span class="review-link">Read on Yelp <span class="arrow">↗</span></span>
+        </a>
+
+        <a class="review-card review-thumbtack fade-up delay-1" href="https://www.thumbtack.com/ma/lynn/landscaping/yc-landscaping-masonry/service/467740248875425805" target="_blank" rel="noopener noreferrer">
+          <span class="review-platform">Thumbtack</span>
+          <span class="review-name">Y&amp;C Landscaping &amp; Masonry</span>
+          <span class="review-stars" aria-label="5 stars">★★★★★</span>
+          <span class="review-sub">Top Pro on Thumbtack — verified reviews from homeowners who hired us.</span>
+          <span class="review-link">Read on Thumbtack <span class="arrow">↗</span></span>
+        </a>
+
+        <a class="review-card review-homeadvisor fade-up delay-2" href="https://www.homeadvisor.com/rated.YCConstruction.99154214.html" target="_blank" rel="noopener noreferrer">
+          <span class="review-platform">HomeAdvisor</span>
+          <span class="review-name">Y&amp;C Construction</span>
+          <span class="review-stars" aria-label="5 stars">★★★★★</span>
+          <span class="review-sub">Rated &amp; screened on HomeAdvisor. Background-checked, licensed, insured.</span>
+          <span class="review-link">Read on HomeAdvisor <span class="arrow">↗</span></span>
+        </a>
+
+        <div class="review-card review-google review-coming-soon fade-up delay-3" aria-disabled="true">
+          <span class="review-platform">Google</span>
+          <span class="review-name">Y&amp;C Landscaping &amp; Masonry</span>
+          <span class="review-stars" aria-hidden="true">★★★★★</span>
+          <span class="review-sub">Google Business Profile launching soon. Check back to leave a review.</span>
+          <span class="review-link review-link-muted">Coming soon</span>
+        </div>
+      </div>
+
+      <div class="reviews-note fade-up delay-4">
+        <span class="rn-mark">✦</span>
+        <p>Happy with our work? It would mean a lot if you left an honest review on any of the platforms above — it helps the next homeowner find us.</p>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
      PAGE: ABOUT
 ════════════════════════════════════════════════════════════════ -->
 <section class="page" id="page-about" data-page="about">
@@ -2150,7 +2303,7 @@ a.mini-card:hover { border-color: var(--accent); transform: translateY(-2px); }
     <div class="foot-grid">
       <div class="foot-brand">
         <a href="#home" class="brand" data-nav="home">
-          <img src="yc-logo-cropped.png" alt="Y&amp;C Landscaping &amp; Construction" class="brand-logo-img" width="225" height="120" />
+          <img src="yc-logo-transparent.png" alt="Y&amp;C Landscaping &amp; Construction" class="brand-logo-img" width="225" height="120" />
         </a>
         <p style="margin-top: 18px;">Hardscape design, masonry, fence installation, and year-round property care. Family-run out of Saugus, MA.</p>
       </div>
@@ -2160,6 +2313,7 @@ a.mini-card:hover { border-color: var(--accent); transform: translateY(-2px); }
           <li><a href="#home" data-nav="home">Home</a></li>
           <li><a href="#services" data-nav="services">Services</a></li>
           <li><a href="#portfolio" data-nav="portfolio">Portfolio</a></li>
+          <li><a href="#reviews" data-nav="reviews">Reviews</a></li>
           <li><a href="#about" data-nav="about">About</a></li>
           <li><a href="#visit" data-nav="visit">Contact</a></li>
         </ul>
