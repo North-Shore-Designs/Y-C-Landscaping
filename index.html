@@ -76,14 +76,26 @@ body {
   min-height: 100vh;
   transition: background 0.5s ease, color 0.5s ease;
   background-image:
-    radial-gradient(1200px 800px at 110% -10%, rgba(180, 71, 31, 0.07), transparent 60%),
-    radial-gradient(900px 700px at -10% 110%, rgba(74, 90, 54, 0.08), transparent 60%);
+    radial-gradient(1200px 800px at 110% -8%, rgba(46, 74, 46, 0.10), transparent 60%),
+    radial-gradient(900px 700px at -10% 110%, rgba(94, 123, 83, 0.10), transparent 60%),
+    radial-gradient(700px 500px at 50% 50%, rgba(31, 63, 134, 0.04), transparent 70%);
 }
 [data-theme="dark"] body {
   background-image:
-    radial-gradient(1200px 800px at 110% -10%, rgba(216, 116, 70, 0.10), transparent 60%),
-    radial-gradient(900px 700px at -10% 110%, rgba(138, 155, 105, 0.07), transparent 60%);
+    radial-gradient(1200px 800px at 110% -8%, rgba(122, 146, 99, 0.12), transparent 60%),
+    radial-gradient(900px 700px at -10% 110%, rgba(91, 134, 206, 0.08), transparent 60%);
 }
+
+/* organic divider — vine pattern between sections */
+.leaf-divider {
+  display: block;
+  width: 100%;
+  height: 36px;
+  color: var(--moss);
+  opacity: 0.4;
+  margin-block: -12px;
+}
+.leaf-divider svg { display: block; width: 100%; height: 100%; }
 img, svg { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
@@ -109,17 +121,21 @@ p  { margin: 0 0 1em; color: var(--ink-soft); }
   text-transform: uppercase;
   letter-spacing: 0.22em;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--moss);
   display: inline-flex;
   align-items: center;
   gap: 10px;
 }
+[data-theme="dark"] .eyebrow { color: var(--moss-soft); }
 .eyebrow::before {
   content: "";
-  width: 22px;
-  height: 1.5px;
-  background: var(--accent);
+  width: 16px;
+  height: 16px;
+  background-color: currentColor;
   display: inline-block;
+  /* leaf shape via clip-path */
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5c0 3 .5 3.5.5 3.5s.5-2 5-7.5C9.5 7 13 4 17 8z' fill='%23000'/></svg>") no-repeat center / contain;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5c0 3 .5 3.5.5 3.5s.5-2 5-7.5C9.5 7 13 4 17 8z' fill='%23000'/></svg>") no-repeat center / contain;
 }
 em.italic { font-family: var(--display); font-style: italic; font-weight: 400; color: var(--accent); font-size: 1.05em; }
 
@@ -180,21 +196,16 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
   letter-spacing: -0.02em;
   color: var(--ink);
 }
-.brand-mark {
-  width: 42px;
-  height: 42px;
-  border-radius: 11px;
-  background: linear-gradient(135deg, #2C5DA8, #142B5E);
-  display: grid;
-  place-items: center;
-  color: #E8C266;
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  box-shadow: inset 0 0 0 1px rgba(232, 194, 102, 0.4), 0 6px 14px -6px rgba(20, 43, 94, 0.55);
-  text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+.brand-logo-img {
+  height: 52px;
+  width: auto;
+  display: block;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px -4px rgba(20, 43, 94, 0.35);
+}
+[data-theme="dark"] .brand-logo-img {
+  filter: brightness(1.05) contrast(1.05);
+  box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(232, 194, 102, 0.18);
 }
 .brand .amp { color: var(--gold); font-style: italic; font-weight: 400; }
 .brand .brand-sub { display: block; font-family: var(--body); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); margin-top: -2px; }
@@ -224,19 +235,25 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
 .nav-phone {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 9px 14px;
+  gap: 7px;
+  padding: 8px 12px;
   border-radius: 999px;
   border: 1px solid var(--line);
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.84rem;
+  line-height: 1;
   color: var(--ink);
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   font-variant-numeric: tabular-nums;
 }
-.nav-phone svg { width: 16px; height: 16px; color: var(--accent); }
+.nav-phone svg {
+  width: 14px !important;
+  height: 14px !important;
+  flex-shrink: 0;
+  color: var(--accent);
+}
 .nav-phone:hover { background: var(--bg-alt); border-color: var(--accent); color: var(--accent); }
-@media (max-width: 1080px) { .nav-phone span { display: none; } .nav-phone { padding: 9px 11px; } }
+@media (max-width: 1080px) { .nav-phone span { display: none; } .nav-phone { padding: 8px 10px; } }
 .icon-btn {
   width: 40px;
   height: 40px;
@@ -667,6 +684,40 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
   margin-top: 4px;
 }
 
+/* ────────────────────────── WHITE-GLOVE EXPLAINER ────────────────────────── */
+.white-glove {
+  margin-top: 36px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--gold);
+  border-radius: 16px;
+  padding: 28px 32px;
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 22px;
+  align-items: flex-start;
+  max-width: 740px;
+}
+.white-glove .wg-mark {
+  font-family: var(--display);
+  color: var(--gold);
+  font-size: 1.6rem;
+  line-height: 1;
+}
+[data-theme="dark"] .white-glove .wg-mark { color: var(--gold-soft); }
+.white-glove h4 {
+  font-family: var(--display);
+  font-size: 1.25rem;
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+.white-glove p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.97rem;
+  line-height: 1.6;
+}
+
 /* ────────────────────────── PORTFOLIO PAGE ────────────────────────── */
 .portfolio-filters {
   display: flex;
@@ -703,7 +754,8 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
 }
 .proj:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
 .proj-art { aspect-ratio: 4 / 3; position: relative; overflow: hidden; }
-.proj-art svg { width: 100%; height: 100%; }
+.proj-art svg, .proj-art img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+.proj:hover .proj-art img { transform: scale(1.04); }
 .proj-body { padding: 22px 22px 24px; }
 .proj-body .meta { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--ink-mute); font-weight: 700; margin-bottom: 8px; }
 .proj-body h4 { margin: 0 0 6px; font-size: 1.22rem; }
@@ -748,12 +800,16 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
 .stat .num {
   font-family: var(--display);
   font-size: clamp(2rem, 3.4vw, 2.8rem);
-  color: var(--accent);
+  color: var(--moss);
   letter-spacing: -0.03em;
   display: block;
   line-height: 1;
   margin-bottom: 12px;
 }
+[data-theme="dark"] .stat .num { color: var(--moss-soft); }
+.stat:nth-child(2) .num { color: var(--accent); }
+.stat:nth-child(4) .num { color: var(--gold); }
+[data-theme="dark"] .stat:nth-child(4) .num { color: var(--gold-soft); }
 .stat .lbl { font-size: 0.86rem; color: var(--ink-soft); }
 
 .values {
@@ -1009,12 +1065,12 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
 }
 .modal-overlay.is-open .modal { transform: scale(1) translateY(0); }
 .modal-art {
-  aspect-ratio: 16 / 8;
+  aspect-ratio: 16 / 9;
   background: linear-gradient(140deg, var(--moss), var(--moss-soft));
   position: relative;
   overflow: hidden;
 }
-.modal-art svg { width: 100%; height: 100%; }
+.modal-art svg, .modal-art img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .modal-close {
   position: absolute;
   top: 18px;
@@ -1065,16 +1121,25 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
 .modal-cta .btn-ghost { color: var(--ink); }
 .modal-body .fun b { color: var(--accent); font-weight: 700; }
 .modal-body .price {
-  font-family: var(--display);
-  font-style: italic;
-  color: var(--ink);
-  font-size: 1rem;
-  margin-top: 4px;
-  margin-bottom: 18px;
-  display: block;
+  font-family: var(--body);
+  color: var(--moss);
+  background: color-mix(in srgb, var(--moss) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--moss) 25%, transparent);
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 10px 14px;
+  border-radius: 10px;
+  margin-top: 8px;
+  margin-bottom: 22px;
+  display: inline-block;
 }
+[data-theme="dark"] .modal-body .price { color: var(--moss-soft); }
 
 /* ────────────────────────── MOBILE NAV ────────────────────────── */
+/* mobile menu hidden by default, everywhere */
+.mobile-menu { display: none; }
+
 @media (max-width: 940px) {
   .nav-links { display: none; }
   .hamburger {
@@ -1089,9 +1154,8 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
   .nav-cta-group .btn { display: none; }
 
   body.menu-open { overflow: hidden; }
-  body.menu-open .mobile-menu { display: flex; }
+  body.menu-open .mobile-menu { display: flex !important; }
   .mobile-menu {
-    display: none;
     position: fixed;
     inset: 0;
     z-index: 90;
@@ -1156,8 +1220,7 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
 <header class="site-header">
   <div class="wrap nav">
     <a href="#home" class="brand" data-nav="home" aria-label="Y&amp;C Landscaping &amp; Masonry home">
-      <span class="brand-mark">Y&amp;C</span>
-      <span>Y<span class="amp">&amp;</span>C <span class="brand-sub">Landscaping &amp; Masonry</span></span>
+      <img src="yc-logo-cropped.png" alt="Y&amp;C Landscaping &amp; Construction" class="brand-logo-img" width="225" height="120" />
     </a>
     <nav aria-label="Primary">
       <ul class="nav-links">
@@ -1170,7 +1233,7 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
     </nav>
     <div class="nav-cta-group">
       <a href="tel:+17816322285" class="nav-phone" aria-label="Call Y&amp;C at (781) 632-2285">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         <span>(781) 632-2285</span>
       </a>
       <button class="icon-btn theme-toggle" aria-label="Toggle color theme" id="themeToggle">
@@ -1211,8 +1274,8 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
           From spring cleanups and weekly mows to retaining walls, stone patios, and custom fences — Y<span style="color:var(--gold)">&amp;</span>C is the only call your property needs, all year long. Family-run out of Saugus, MA.
         </p>
         <div class="hero-ctas fade-up delay-3">
-          <a href="#visit" data-nav="visit" class="btn btn-primary btn-large">Get a Free Quote <span class="arrow">→</span></a>
-          <a href="#portfolio" data-nav="portfolio" class="btn btn-ghost btn-large">See Our Work</a>
+          <a href="#portfolio" data-nav="portfolio" class="btn btn-primary btn-large">See Our Work <span class="arrow">→</span></a>
+          <a href="#services" data-nav="services" class="btn btn-ghost btn-large">What We Do</a>
         </div>
         <div class="hero-meta fade-up delay-4">
           <div><span class="num">15+</span><span class="label">Years on the trowel</span></div>
@@ -1221,8 +1284,9 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
         </div>
       </div>
       <div class="hero-visual fade-up delay-2" aria-hidden="true">
-        <!-- hand-crafted hero illustration: layered stone wall with foliage + sun -->
-        <svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <img src="https://images.unsplash.com/photo-1597201278257-3687be27d954?w=900&auto=format&fit=crop&q=80" alt="A beautifully landscaped garden with manicured flower beds" loading="eager" />
+        <!-- hidden legacy SVG (kept as fallback) -->
+        <svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="display:none">
           <defs>
             <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
               <stop offset="0%"  stop-color="#E8C994"/>
@@ -1482,8 +1546,8 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
       <article class="feature-card fade-up">
         <div class="feature-art">
           <span class="ribbon"><span class="dot"></span> Completed Oct 2025</span>
-          <!-- patio illustration -->
-          <svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice">
+          <img src="https://images.unsplash.com/photo-1603518147332-ba54b96276a3?w=1200&auto=format&fit=crop&q=80" alt="The Marshfield Project — bluestone patio" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <svg style="display:none" viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice">
             <defs>
               <linearGradient id="patioSky" x1="0" x2="0" y1="0" y2="1">
                 <stop offset="0%"  stop-color="#E0CDA4"/>
@@ -1555,12 +1619,11 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
     <div class="wrap">
       <div class="cta-band fade-up">
         <div>
-          <h2>Let’s build something that lasts.</h2>
-          <p>Free on-site consult. Honest pricing. Built by hand by the crew you meet.</p>
+          <h2>Let’s walk your property.</h2>
+          <p>Every yard is different. We don’t do one-size-fits-all pricing — every quote is built around your land, your materials, and your vision.</p>
         </div>
         <div class="actions">
-          <a href="#visit" data-nav="visit" class="btn btn-primary btn-large">Get a Free Quote <span class="arrow">→</span></a>
-          <a href="tel:+17816322285" class="btn btn-ghost btn-large">Call (781) 632-2285</a>
+          <a href="tel:+17816322285" class="btn btn-primary btn-large">📞 (781) 632-2285</a>
         </div>
       </div>
     </div>
@@ -1574,8 +1637,16 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
   <div class="page-hero">
     <div class="wrap">
       <span class="eyebrow fade-up">Services</span>
-      <h1 class="fade-up delay-1">Stonework, hardscape, and fencing — done <em class="italic">by hand</em>.</h1>
-      <p class="lead fade-up delay-2">Tap any service to see what’s included, what we charge for, and a little lore from the trade.</p>
+      <h1 class="fade-up delay-1">Stonework, lawn care, and everything in between — done <em class="italic">by hand</em>.</h1>
+      <p class="lead fade-up delay-2">Tap any service to see what’s included and a little lore from the trade.</p>
+
+      <div class="white-glove fade-up delay-3">
+        <div class="wg-mark">✦</div>
+        <div>
+          <h4>Why we don’t list prices.</h4>
+          <p>Every property is different — different grade, different soil, different access, different vision. We don’t do one-size-fits-all numbers. Every quote is white-glove and built around your land, your materials, and what you actually want it to feel like to live there. Walk-throughs are free, every time.</p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1794,15 +1865,15 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
         <div>
           <span class="eyebrow fade-up">Our story</span>
           <h1 class="fade-up delay-1">One owner. <span style="color:var(--accent)">One</span> trowel. <em class="italic" style="display:block;">A whole lot of stone.</em></h1>
-          <p class="fade-up delay-2" style="font-size:1.06rem;">Y<span style="color:var(--gold)">&amp;</span>C Landscaping &amp; Masonry was founded by <b>Yovani</b> — a one-man-band who started with a single retaining wall on a 90-degree Saturday and a stack of fieldstone too heavy for one person to move. The wall is still standing. And the business has been growing ever since.</p>
+          <p class="fade-up delay-2" style="font-size:1.06rem;">Y<span style="color:var(--gold)">&amp;</span>C Landscaping &amp; Masonry was founded — and is still owned — by <b>Yovani</b>. What started as a single retaining wall on a 90-degree Saturday has grown into a full crew that takes on property care, hardscape design, masonry, and fence builds across the North Shore. The team has grown. The owner-on-site standards haven’t.</p>
           <p class="fade-up delay-3">Today we’re a tight family-run crew based on Hamilton Street in Saugus, working across the North Shore. We swing the hammers ourselves. We believe good stonework is half engineering, half art — and 100% honest labor.</p>
           <div class="fade-up delay-4" style="margin-top: 22px;">
             <a href="#visit" data-nav="visit" class="btn btn-primary">Work with us <span class="arrow">→</span></a>
           </div>
         </div>
         <div class="about-visual fade-up delay-2" aria-hidden="true">
-          <!-- About illustration: two hands placing a stone with mountains background -->
-          <svg viewBox="0 0 500 525" preserveAspectRatio="xMidYMid slice">
+          <img src="https://images.unsplash.com/photo-1694475499611-1f42774574ca?w=900&auto=format&fit=crop&q=80" alt="A manicured garden — the kind of property care Y&C is known for" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <svg style="display:none" viewBox="0 0 500 525" preserveAspectRatio="xMidYMid slice">
             <defs>
               <linearGradient id="aboutBg" x1="0" x2="0" y1="0" y2="1">
                 <stop offset="0%"  stop-color="#6E7F58"/>
@@ -1898,7 +1969,7 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
           <div>
             <h4>Yovani</h4>
             <span class="role">Founder · Owner-Operator</span>
-            <p>Yovani started Y&amp;C as a one-man operation — pulling weeds, swinging trowels, and stacking stone himself on every job. Fifteen years later he still walks every property and personally signs off on every wall, patio, and cleanup. The crew has grown. The standards haven’t.</p>
+            <p>Yovani is the founder and sole owner of Y&amp;C. He built the business from a single retaining-wall job into a full crew that handles property care, hardscape, masonry, and fences across the North Shore. He still walks every property himself and personally signs off on every build — wall, patio, fence, or weekly mow.</p>
           </div>
         </div>
       </div>
@@ -2027,10 +2098,9 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
     <div class="foot-grid">
       <div class="foot-brand">
         <a href="#home" class="brand" data-nav="home">
-          <span class="brand-mark">Y&amp;C</span>
-          <span>Y<span class="amp">&amp;</span>C <span class="brand-sub">Landscaping &amp; Masonry</span></span>
+          <img src="yc-logo-cropped.png" alt="Y&amp;C Landscaping &amp; Construction" class="brand-logo-img" width="225" height="120" />
         </a>
-        <p>Hardscape design, masonry, fence installation, and year-round property care. Family-run out of Saugus, MA.</p>
+        <p style="margin-top: 18px;">Hardscape design, masonry, fence installation, and year-round property care. Family-run out of Saugus, MA.</p>
       </div>
       <div class="foot-col">
         <h5>Visit</h5>
@@ -2087,8 +2157,7 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
       <div class="fun-label">Stoneworker’s lore</div>
       <div class="fun" id="modalFun"></div>
       <div class="modal-cta">
-        <a href="#visit" data-nav="visit" class="btn btn-primary btn-large" id="modalQuoteBtn">Get a Free Quote <span class="arrow">→</span></a>
-        <a href="tel:+17816322285" class="btn btn-ghost">📞 (781) 632-2285</a>
+        <a href="tel:+17816322285" class="btn btn-primary btn-large">📞 (781) 632-2285</a>
       </div>
     </div>
   </div>
@@ -2096,145 +2165,128 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
 
 <script>
 /* ────────────────────────── DATA: SERVICES ────────────────────────── */
+const PRICING_LINE = "Tailored quote — every property is different. We don’t do one-size-fits-all pricing.";
+
 const services = {
   hardscape: {
     num: "01 / Design",
     title: "Hardscape Design",
-    price: "Design package: starts at $850 · waived on builds over $15k",
     desc: "Before any stone gets moved we walk the property, take measurements, and sketch a full hardscape plan — grade, drainage, sightlines, materials, and how each piece talks to the house. You get hand-drawn plans, a 3D walkthrough, and physical material samples to live with for a week.",
     extras: ["Hand-drawn plans", "3D renderings", "Material samples", "Plant integration", "Drainage analysis", "Permit-ready drawings"],
     fun: "The word <b>hardscape</b> first appeared in print in landscape design textbooks in the late 1970s, distinguishing built elements — patios, walls, paths — from softscape (plants). The two terms now define the trade.",
-    art: "design"
+    photo: "https://images.unsplash.com/photo-1597201278257-3687be27d954?w=1200&auto=format&fit=crop&q=80"
   },
   retaining: {
     num: "02 / Stone",
     title: "Retaining Walls",
-    price: "From ~$95 / face-foot · engineered systems quoted separately",
     desc: "Whether you need to tame a backyard slope or carve a tier into a hillside, we build retaining walls that handle the load and look right with the house. Segmental block for clean lines, fieldstone for old-New-England character, or formal cut stone for grand entries.",
     extras: ["Segmental block", "Mortared fieldstone", "Dry-stack fieldstone", "Cut granite", "Engineered drainage", "Geogrid reinforcement", "Walls over 4ft (engineered)"],
     fun: "Stone retaining walls have been holding back hillsides for at least <b>3,500 years</b> — the terraced agricultural walls of Machu Picchu still stand today, built without mortar and engineered to drain rainwater away from the slope, exactly the way we still do it.",
-    art: "wall"
+    photo: "https://images.unsplash.com/photo-1439741792332-bb036b9c06b3?w=1200&auto=format&fit=crop&q=80"
   },
   patios: {
     num: "03 / Surface",
     title: "Patios & Walkways",
-    price: "From ~$28 / sq ft for pavers · ~$42 / sq ft for natural stone",
     desc: "A patio is only as good as what’s under it. We dig down 8–10 inches, compact in 2-inch lifts, run a woven geotextile, and set the surface on a dry-bedded base with polymeric joint sand. They don’t shift, they don’t weed, they don’t move.",
     extras: ["Bluestone", "Brick", "Concrete pavers", "Natural fieldstone", "Permeable systems", "Mortared on slab"],
     fun: "The bluestone we love in New England is technically a <b>fine-grained feldspathic sandstone</b>, formed roughly 380 million years ago in a freshwater delta — meaning every bluestone patio you walk on is built from a riverbed older than dinosaurs.",
-    art: "patio"
+    photo: "https://images.unsplash.com/photo-1501668343018-9234e3ee801a?w=1200&auto=format&fit=crop&q=80"
   },
   stonewalls: {
     num: "04 / Heritage",
     title: "Stone Walls",
-    price: "From ~$85 / face-foot dry-stack · ~$120 / face-foot mortared",
     desc: "The classic New England stone wall — built the slow way. Each stone hand-picked, dry-stacked or set in mortar, capped to shed water. We work in fieldstone, granite, or whatever’s already on your property if that’s the look you want.",
     extras: ["Dry-stack fieldstone", "Mortared stone", "Capstone work", "Repair of old walls", "Granite", "Property-sourced stone"],
     fun: "New England has roughly <b>240,000 miles</b> of dry-stacked stone walls — enough, end to end, to wrap around the Earth almost ten times. Most were built between 1775 and 1850 as farmers cleared rocky fields. We’re still building in that tradition.",
-    art: "wall"
+    photo: "https://images.unsplash.com/photo-1657401972566-6679de283e1b?w=1200&auto=format&fit=crop&q=80"
   },
   masonry: {
     num: "05 / Custom",
     title: "Custom Masonry",
-    price: "Quoted per project · most range $3k – $25k+",
     desc: "The custom work that makes a house feel finished. Stone steps and stoops, brick columns, fire pits and fireplaces, outdoor kitchen footprints, chimney repointing, repairs to old work, restoration of historic stone. Send us a photo of what you’re imagining.",
     extras: ["Steps &amp; stoops", "Pillars / pilasters", "Fire pits", "Outdoor fireplaces", "Outdoor kitchens", "Chimney work", "Stone restoration"],
     fun: "The oldest known mortar — a lime-based binder used to set stones — was found at a <b>12,000-year-old site in Turkey</b>. The chemistry has barely changed: lime, sand, and water, just like the masons used at Göbekli Tepe.",
-    art: "custom"
+    photo: "https://images.unsplash.com/photo-1598833775803-99eea89ad6a1?w=1200&auto=format&fit=crop&q=80"
   },
   fence: {
     num: "06 / Boundary",
     title: "Fence Installation",
-    price: "From ~$45 / linear ft cedar · ~$55 / linear ft vinyl · gates quoted custom",
     desc: "Property surveys read carefully, posts dug below frost line and set in concrete, lines pulled plumb to the inch. Cedar for warmth, vinyl for zero-maintenance, ornamental aluminum or steel for clean modern lines, agricultural for big lots. Custom gates and hardware to match.",
     extras: ["Cedar (board-on-board, picket, privacy)", "Vinyl", "Aluminum / wrought iron", "Agricultural / split-rail", "Custom gates", "Hardware upgrades", "Survey staking"],
     fun: "Robert Frost’s line <em>“good fences make good neighbors”</em> isn’t actually Frost’s opinion in the poem — the speaker disagrees with his wall-loving neighbor. But the saying stuck, and the fencing trade has been quoting it ever since.",
-    art: "fence"
+    photo: "https://images.unsplash.com/photo-1530328881134-8c525cc57036?w=1200&auto=format&fit=crop&q=80"
   },
   cleanup: {
     num: "Care · Seasonal",
     title: "Spring &amp; Fall Cleanups",
-    price: "From $475 front &amp; back · bigger lots quoted on-site",
     desc: "We reset the property for the season. Rake out beds and lawn, cut back perennials, pull winter weeds, edge garden lines crisp, blow down hardscape, and haul off every bit of debris. By the time we leave, the place looks like new.",
     extras: ["Bed cleanout", "Perennial cutback", "Edge re-cut", "Hardscape blow-down", "All debris hauled away"],
     fun: "The old New England farming calendar called the first warm week of April <b>“mud week.”</b> It was when the frozen ground finally let go — and the only week of the year you could pull dead growth without breaking roots. Spring cleanup is basically that same rhythm, 200 years later.",
-    art: "design"
+    photo: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200&auto=format&fit=crop&q=80"
   },
   mowing: {
     num: "Care · Weekly",
     title: "Lawn Care &amp; Mowing",
-    price: "From $55 / visit residential · weekly or biweekly schedules",
     desc: "Sharp blades, varied mow pattern to prevent rut lines, all edges trimmed, hardscape and driveway blown clean. We rotate cutting direction every visit so your lawn stays even and your turf stays healthy.",
     extras: ["Weekly mow", "Biweekly mow", "Trim &amp; edge", "Driveway blow-down", "Clippings bagged on request"],
     fun: "A typical residential lawn produces about <b>2,500 lbs of clippings a year</b>. Most should stay on the lawn — mulched, they return up to 30% of your nitrogen for free. We mulch by default and only bag on request.",
-    art: "design"
+    photo: "https://images.unsplash.com/photo-1690068023694-053da714f95f?w=1200&auto=format&fit=crop&q=80"
   },
   edging: {
     num: "Care · Detail",
     title: "Bed Edging &amp; Definition",
-    price: "From ~$1.25 / linear ft · usually bundled with cleanup or mulch",
     desc: "The single thing that separates a “done” yard from a “mowed” one. We cut a clean V-trench at every bed line, walkway edge, and tree ring — about 3 inches deep, 4 inches wide, beveled toward the bed so it sheds water and shows a sharp shadow line.",
     extras: ["Garden bed edging", "Walkway edging", "Tree ring edging", "Re-cut existing edges", "Spade or machine cut"],
     fun: "British formal gardens have used the “half-moon edging spade” since the <b>1700s</b> — a curved blade made specifically to cut crisp bed lines. We still use the same shape today. Some tools peak early.",
-    art: "design"
+    photo: "https://images.unsplash.com/photo-1558904541-efa843a96f01?w=1200&auto=format&fit=crop&q=80"
   },
   mulch: {
     num: "Care · Spring",
     title: "Black Mulch &amp; Bark",
-    price: "From $85 / yard installed · most yards take 6 – 15 yards",
     desc: "We rake out the old, define the edges, and lay 2 – 3 inches of fresh mulch around every bed and tree. Black for sharpest contrast, dark brown for warmer tone, natural hemlock or pine if you want a softer look. Suppresses weeds, holds moisture, makes everything pop.",
     extras: ["Black-dyed", "Dark brown", "Hemlock / pine bark", "Around trees &amp; beds", "Volume discount on larger jobs"],
     fun: "Mulch isn’t just decoration — it can cut weed germination by <b>up to 90%</b> by blocking the sunlight weed seeds need to sprout. That’s why a fresh layer every spring saves you hours of pulling all summer.",
-    art: "design"
+    photo: "https://images.unsplash.com/photo-1589562760889-38898c71d3d8?w=1200&auto=format&fit=crop&q=80"
   },
   leaves: {
     num: "Care · Fall",
     title: "Leaf Cleanup",
-    price: "From $375 typical residential · large or wooded lots quoted on-site",
     desc: "End-of-fall sweep. We blow leaves from beds, lawn, hardscape, and tight corners to the curb or onto tarps — your choice. Hauled off-site, no piles left behind. Add gutter cleanout for a flat extra.",
     extras: ["Full property blow-down", "Bagged or hauled", "Gutter cleanout add-on", "Late-season callbacks", "One-time or recurring"],
     fun: "A mature oak drops around <b>700,000 leaves</b> per season. Left on a lawn, that mat blocks sunlight and smothers turf by mid-November — which is why we time the last cleanup right after the oaks finally let go.",
-    art: "design"
+    photo: "https://images.unsplash.com/photo-1516700675895-b2e35cae333c?w=1200&auto=format&fit=crop&q=80"
   },
   seasonal: {
     num: "Care · Program",
     title: "Seasonal Care Program",
-    price: "Custom monthly rate · most residential programs $250 – $600 / mo",
     desc: "One flat monthly invoice covers the full schedule: spring &amp; fall cleanup, every mow, edge, mulch refresh, and reasonable in-season touch-ups. Locked-in pricing, priority scheduling, and one less thing to remember.",
     extras: ["Locked seasonal pricing", "Priority scheduling", "Cleanup + mowing + edging", "Mulch refresh included", "First-call for storm/snow add-ons"],
     fun: "Most landscape pros agree the “1% rule” works: spend roughly 1% of your home’s value per year on outside care and the property holds — or improves — its curb value. A $700k home, $7k a year. Programs make that math easier.",
-    art: "design"
+    photo: "https://images.unsplash.com/photo-1527359443443-84a48aec73d2?w=1200&auto=format&fit=crop&q=80"
   }
-};
-
-/* SVG art for each modal */
-const modalArt = {
-  design: `<svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="dBg" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#6E7F58"/><stop offset="100%" stop-color="#4A5A36"/></linearGradient></defs><rect width="600" height="300" fill="url(#dBg)"/><g stroke="#FBF7EE" stroke-width="1.5" fill="none" opacity="0.5"><line x1="0" y1="60"  x2="600" y2="60"/><line x1="0" y1="120" x2="600" y2="120"/><line x1="0" y1="180" x2="600" y2="180"/><line x1="0" y1="240" x2="600" y2="240"/><line x1="100" y1="0" x2="100" y2="300"/><line x1="200" y1="0" x2="200" y2="300"/><line x1="300" y1="0" x2="300" y2="300"/><line x1="400" y1="0" x2="400" y2="300"/><line x1="500" y1="0" x2="500" y2="300"/></g><path d="M40 220 Q200 80 380 160 T560 100" stroke="#D87446" stroke-width="3" fill="none"/><circle cx="40"  cy="220" r="6" fill="#D87446"/><circle cx="380" cy="160" r="6" fill="#D87446"/><circle cx="560" cy="100" r="6" fill="#D87446"/></svg>`,
-  wall: `<svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="wG" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#B8AC92"/><stop offset="100%" stop-color="#7A6F58"/></linearGradient></defs><rect width="600" height="300" fill="#9A8E72"/><g><rect x="0"   y="60"  width="100" height="50" rx="4" fill="url(#wG)" stroke="rgba(0,0,0,0.3)"/><rect x="100" y="60"  width="140" height="50" rx="5" fill="#A89B7E" stroke="rgba(0,0,0,0.3)"/><rect x="240" y="60"  width="110" height="50" rx="4" fill="url(#wG)" stroke="rgba(0,0,0,0.3)"/><rect x="350" y="60"  width="120" height="50" rx="5" fill="#B8AC92" stroke="rgba(0,0,0,0.3)"/><rect x="470" y="60"  width="130" height="50" rx="4" fill="url(#wG)" stroke="rgba(0,0,0,0.3)"/><rect x="0"   y="110" width="130" height="50" rx="5" fill="#A89B7E" stroke="rgba(0,0,0,0.3)"/><rect x="130" y="110" width="100" height="50" rx="4" fill="url(#wG)" stroke="rgba(0,0,0,0.3)"/><rect x="230" y="110" width="140" height="50" rx="5" fill="#B8AC92" stroke="rgba(0,0,0,0.3)"/><rect x="370" y="110" width="120" height="50" rx="4" fill="url(#wG)" stroke="rgba(0,0,0,0.3)"/><rect x="490" y="110" width="110" height="50" rx="5" fill="#A89B7E" stroke="rgba(0,0,0,0.3)"/><rect x="0"   y="160" width="110" height="50" rx="4" fill="url(#wG)" stroke="rgba(0,0,0,0.3)"/><rect x="110" y="160" width="130" height="50" rx="5" fill="#B8AC92" stroke="rgba(0,0,0,0.3)"/><rect x="240" y="160" width="110" height="50" rx="4" fill="#A89B7E" stroke="rgba(0,0,0,0.3)"/><rect x="350" y="160" width="130" height="50" rx="5" fill="url(#wG)" stroke="rgba(0,0,0,0.3)"/><rect x="480" y="160" width="120" height="50" rx="4" fill="#B8AC92" stroke="rgba(0,0,0,0.3)"/><rect x="0" y="210" width="600" height="90" fill="#4A5A36"/><ellipse cx="80" cy="220" rx="40" ry="14" fill="#6E7F58"/><ellipse cx="280" cy="218" rx="50" ry="16" fill="#6E7F58"/><ellipse cx="480" cy="220" rx="42" ry="14" fill="#6E7F58"/></g></svg>`,
-  patio: `<svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="pSky" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#E8C994"/><stop offset="100%" stop-color="#C49350"/></linearGradient><linearGradient id="pStn" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#C2B7A0"/><stop offset="100%" stop-color="#8E826A"/></linearGradient></defs><rect width="600" height="300" fill="url(#pSky)"/><ellipse cx="120" cy="160" rx="80" ry="40" fill="#4A5A36" opacity="0.85"/><ellipse cx="450" cy="150" rx="130" ry="50" fill="#3A4628"/><polygon points="60,300 540,300 580,180 20,180" fill="url(#pStn)"/><g stroke="rgba(0,0,0,0.18)" stroke-width="1" fill="none"><line x1="20" y1="230" x2="580" y2="230"/><line x1="20" y1="265" x2="580" y2="265"/><line x1="180" y1="180" x2="160" y2="300"/><line x1="300" y1="180" x2="300" y2="300"/><line x1="420" y1="180" x2="440" y2="300"/></g><rect x="20" y="160" width="560" height="20" fill="#857A5F"/><ellipse cx="100" cy="260" rx="50" ry="14" fill="#1B1A17" opacity="0.3"/><ellipse cx="500" cy="260" rx="50" ry="14" fill="#1B1A17" opacity="0.3"/></svg>`,
-  custom: `<svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="cBg" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#8C3617"/><stop offset="100%" stop-color="#4A1E0A"/></linearGradient></defs><rect width="600" height="300" fill="url(#cBg)"/><ellipse cx="300" cy="240" rx="160" ry="36" fill="#1B1A17"/><ellipse cx="300" cy="220" rx="160" ry="32" fill="#857A5F"/><g><path d="M250 210 Q260 170 280 195 Q295 150 305 190 Q318 155 325 195 Q340 170 350 210 L250 210 Z" fill="#D87446"/><path d="M270 205 Q280 175 290 195 Q300 165 310 195 Q320 175 330 205 L270 205 Z" fill="#E8C994" opacity="0.9"/><path d="M285 200 Q295 180 305 195 Q310 180 315 200 L285 200 Z" fill="#FBF7EE" opacity="0.85"/></g><rect x="80" y="200" width="40" height="80" fill="#8E826A"/><rect x="480" y="200" width="40" height="80" fill="#8E826A"/><ellipse cx="100" cy="195" rx="30" ry="10" fill="#4A5A36"/><ellipse cx="500" cy="195" rx="30" ry="10" fill="#4A5A36"/></svg>`,
-  fence: `<svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="fSky" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#E0CDA4"/><stop offset="100%" stop-color="#9A8E72"/></linearGradient></defs><rect width="600" height="300" fill="url(#fSky)"/><rect x="0" y="220" width="600" height="80" fill="#6E7F58"/><g fill="#A56B3A" stroke="#5A3818" stroke-width="1.5"><polygon points="40,90 60,70 80,90 80,260 40,260"/><polygon points="120,90 140,70 160,90 160,260 120,260"/><polygon points="200,90 220,70 240,90 240,260 200,260"/><polygon points="280,90 300,70 320,90 320,260 280,260"/><polygon points="360,90 380,70 400,90 400,260 360,260"/><polygon points="440,90 460,70 480,90 480,260 440,260"/><polygon points="520,90 540,70 560,90 560,260 520,260"/></g><rect x="0" y="130" width="600" height="14" fill="#5A3818"/><rect x="0" y="200" width="600" height="14" fill="#5A3818"/><ellipse cx="100" cy="220" rx="44" ry="14" fill="#4A5A36"/><ellipse cx="500" cy="220" rx="44" ry="14" fill="#4A5A36"/></svg>`
 };
 
 /* ────────────────────────── DATA: PORTFOLIO ────────────────────────── */
 const projects = [
-  { id: "marshfield",  cat: "patio",  size: "lg",  meta: "Beverly · 2025",        title: "The Marshfield Project",   blurb: "Tiered bluestone patio, fieldstone fire pit, cedar privacy fence." },
-  { id: "salemwall",   cat: "wall",   size: "med", meta: "Salem · 2024",          title: "Witch House Wall Restore",  blurb: "Restoration of a 200-year-old dry-stack fieldstone wall." },
-  { id: "gloucwalk",   cat: "patio",  size: "med", meta: "Gloucester · 2024",     title: "Granite Walkway",           blurb: "Custom-cut granite stepping stones through a coastal garden." },
-  { id: "ipswichfen",  cat: "fence",  size: "sm",  meta: "Ipswich · 2025",        title: "Cedar Board-on-Board",      blurb: "180 linear feet of full-privacy cedar with a matching arched gate." },
-  { id: "manchpit",    cat: "custom", size: "sm",  meta: "Manchester · 2024",     title: "Stone Fire Pit",            blurb: "Hand-laid fieldstone fire pit with built-in seating wall." },
-  { id: "topspatio",   cat: "patio",  size: "sm",  meta: "Topsfield · 2024",      title: "Permeable Paver Patio",     blurb: "1,400 sq ft permeable paver patio over engineered drainage base." },
-  { id: "danvretain",  cat: "wall",   size: "med", meta: "Danvers · 2023",        title: "Tiered Retaining Walls",    blurb: "Three-tier segmental block retaining system solving a 9-ft grade drop." },
-  { id: "hamiltgate",  cat: "fence",  size: "med", meta: "Hamilton · 2025",       title: "Ag-Style Paddock Fencing",  blurb: "1,200 ft of agricultural fencing on a 12-acre horse property." },
-  { id: "salemkitch",  cat: "custom", size: "lg",  meta: "Salem · 2025",          title: "Outdoor Kitchen Build",     blurb: "Full outdoor kitchen with stone counters, pizza oven, and integrated grill." }
+  { id: "marshfield",  cat: "patio",  size: "lg",  meta: "Beverly · 2025",        title: "The Marshfield Project",   blurb: "Tiered bluestone patio, fieldstone fire pit, cedar privacy fence.",
+    photo: "https://images.unsplash.com/photo-1715090576114-c07384af2069?w=900&auto=format&fit=crop&q=80" },
+  { id: "salemwall",   cat: "wall",   size: "med", meta: "Salem · 2024",          title: "Witch House Wall Restore",  blurb: "Restoration of a 200-year-old dry-stack fieldstone wall.",
+    photo: "https://images.unsplash.com/photo-1653497412928-d770032e9c3a?w=900&auto=format&fit=crop&q=80" },
+  { id: "gloucwalk",   cat: "patio",  size: "med", meta: "Gloucester · 2024",     title: "Granite Walkway",           blurb: "Custom-cut granite stepping stones through a coastal garden.",
+    photo: "https://images.unsplash.com/photo-1697844331891-f9ca6e142533?w=900&auto=format&fit=crop&q=80" },
+  { id: "ipswichfen",  cat: "fence",  size: "sm",  meta: "Ipswich · 2025",        title: "Cedar Board-on-Board",      blurb: "180 linear feet of full-privacy cedar with a matching arched gate.",
+    photo: "https://images.unsplash.com/photo-1593285247650-cd7bb44adcfd?w=900&auto=format&fit=crop&q=80" },
+  { id: "manchpit",    cat: "custom", size: "sm",  meta: "Manchester · 2024",     title: "Stone Fire Pit",            blurb: "Hand-laid fieldstone fire pit with built-in seating wall.",
+    photo: "https://images.unsplash.com/photo-1598833775803-99eea89ad6a1?w=900&auto=format&fit=crop&q=80" },
+  { id: "topspatio",   cat: "patio",  size: "sm",  meta: "Topsfield · 2024",      title: "Permeable Paver Patio",     blurb: "1,400 sq ft permeable paver patio over engineered drainage base.",
+    photo: "https://images.unsplash.com/photo-1603518147332-ba54b96276a3?w=900&auto=format&fit=crop&q=80" },
+  { id: "danvretain",  cat: "wall",   size: "med", meta: "Danvers · 2023",        title: "Tiered Retaining Walls",    blurb: "Three-tier segmental block retaining system solving a 9-ft grade drop.",
+    photo: "https://images.unsplash.com/photo-1649829658924-448d6522436e?w=900&auto=format&fit=crop&q=80" },
+  { id: "hamiltgate",  cat: "fence",  size: "med", meta: "Hamilton · 2025",       title: "Ag-Style Paddock Fencing",  blurb: "1,200 ft of agricultural fencing on a 12-acre horse property.",
+    photo: "https://images.unsplash.com/photo-1601042860368-debed90085e0?w=900&auto=format&fit=crop&q=80" },
+  { id: "salemkitch",  cat: "custom", size: "lg",  meta: "Salem · 2025",          title: "Outdoor Kitchen Build",     blurb: "Full outdoor kitchen with stone counters, pizza oven, and integrated grill.",
+    photo: "https://images.unsplash.com/photo-1644232139100-c0320ff0c2fe?w=900&auto=format&fit=crop&q=80" }
 ];
-
-const projectArt = {
-  patio: `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="pa1" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#E0CDA4"/><stop offset="100%" stop-color="#9A8E72"/></linearGradient></defs><rect width="600" height="450" fill="url(#pa1)"/><ellipse cx="150" cy="240" rx="100" ry="40" fill="#4A5A36" opacity="0.85"/><ellipse cx="450" cy="220" rx="140" ry="55" fill="#3A4628"/><polygon points="100,450 500,450 540,290 60,290" fill="#C2B7A0"/><g stroke="rgba(0,0,0,0.18)" fill="none"><line x1="60" y1="340" x2="540" y2="340"/><line x1="80" y1="395" x2="520" y2="395"/><line x1="180" y1="290" x2="160" y2="450"/><line x1="300" y1="290" x2="300" y2="450"/><line x1="420" y1="290" x2="440" y2="450"/></g></svg>`,
-  wall:  `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="wa1" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#E0CDA4"/><stop offset="100%" stop-color="#9A8E72"/></linearGradient></defs><rect width="600" height="450" fill="url(#wa1)"/><ellipse cx="500" cy="180" rx="120" ry="40" fill="#4A5A36" opacity="0.8"/><g><rect x="0" y="200" width="600" height="60" fill="#B8AC92"/><rect x="0" y="200" width="120" height="60" fill="#A89B7E" stroke="rgba(0,0,0,0.3)"/><rect x="120" y="200" width="100" height="60" fill="#B8AC92" stroke="rgba(0,0,0,0.3)"/><rect x="220" y="200" width="140" height="60" fill="#9A8E72" stroke="rgba(0,0,0,0.3)"/><rect x="360" y="200" width="110" height="60" fill="#A89B7E" stroke="rgba(0,0,0,0.3)"/><rect x="470" y="200" width="130" height="60" fill="#B8AC92" stroke="rgba(0,0,0,0.3)"/><rect x="0" y="260" width="140" height="60" fill="#B8AC92" stroke="rgba(0,0,0,0.3)"/><rect x="140" y="260" width="100" height="60" fill="#A89B7E" stroke="rgba(0,0,0,0.3)"/><rect x="240" y="260" width="130" height="60" fill="#9A8E72" stroke="rgba(0,0,0,0.3)"/><rect x="370" y="260" width="120" height="60" fill="#B8AC92" stroke="rgba(0,0,0,0.3)"/><rect x="490" y="260" width="110" height="60" fill="#A89B7E" stroke="rgba(0,0,0,0.3)"/><rect x="0" y="320" width="600" height="130" fill="#4A5A36"/></g></svg>`,
-  fence: `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="fa1" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#E0CDA4"/><stop offset="100%" stop-color="#9A8E72"/></linearGradient></defs><rect width="600" height="450" fill="url(#fa1)"/><rect x="0" y="330" width="600" height="120" fill="#6E7F58"/><g fill="#A56B3A" stroke="#5A3818" stroke-width="1.5"><polygon points="40,150 60,130 80,150 80,400 40,400"/><polygon points="140,150 160,130 180,150 180,400 140,400"/><polygon points="240,150 260,130 280,150 280,400 240,400"/><polygon points="340,150 360,130 380,150 380,400 340,400"/><polygon points="440,150 460,130 480,150 480,400 440,400"/><polygon points="540,150 560,130 580,150 580,400 540,400"/></g><rect x="0" y="200" width="600" height="14" fill="#5A3818"/><rect x="0" y="310" width="600" height="14" fill="#5A3818"/></svg>`,
-  custom:`<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="ca1" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#8C3617"/><stop offset="100%" stop-color="#4A1E0A"/></linearGradient></defs><rect width="600" height="450" fill="url(#ca1)"/><ellipse cx="300" cy="360" rx="220" ry="50" fill="#1B1A17"/><ellipse cx="300" cy="330" rx="220" ry="44" fill="#857A5F"/><g><path d="M220 320 Q240 250 280 300 Q300 220 320 295 Q345 240 365 305 Q390 260 410 325 L220 325 Z" fill="#D87446"/><path d="M250 315 Q270 270 290 305 Q310 260 330 305 Q350 270 370 320 L250 320 Z" fill="#E8C994"/><path d="M280 310 Q295 280 310 300 Q325 280 335 315 L280 315 Z" fill="#FBF7EE"/></g><rect x="60" y="280" width="60" height="120" fill="#8E826A"/><rect x="480" y="280" width="60" height="120" fill="#8E826A"/><ellipse cx="90" cy="275" rx="40" ry="14" fill="#4A5A36"/><ellipse cx="510" cy="275" rx="40" ry="14" fill="#4A5A36"/></svg>`
-};
 
 /* ────────────────────────── RENDER PORTFOLIO ────────────────────────── */
 function renderPortfolio(filter) {
@@ -2243,7 +2295,7 @@ function renderPortfolio(filter) {
   const list = filter === "all" ? projects : projects.filter(p => p.cat === filter);
   grid.innerHTML = list.map(p => `
     <article class="proj ${p.size}" data-cat="${p.cat}">
-      <div class="proj-art">${projectArt[p.cat]}</div>
+      <div class="proj-art"><img src="${p.photo}" alt="${p.title}" loading="lazy" /></div>
       <div class="proj-body">
         <div class="meta">${p.meta}</div>
         <h4>${p.title}</h4>
@@ -2326,12 +2378,14 @@ function openService(id) {
   const svc = services[id];
   if (!svc) return;
   modalNumEl.textContent  = svc.num;
-  modalTitleE.textContent = svc.title;
-  modalPriceE.textContent = svc.price;
+  modalTitleE.innerHTML   = svc.title;
+  modalPriceE.textContent = PRICING_LINE;
   modalDescE.textContent  = svc.desc;
   modalExtras.innerHTML   = svc.extras.map(x => `<span class="pill">${x}</span>`).join("");
   modalFunE.innerHTML     = svc.fun;
-  modalArtEl.innerHTML    = modalArt[svc.art] || "";
+  modalArtEl.innerHTML    = svc.photo
+    ? `<img src="${svc.photo}" alt="${svc.title.replace(/<[^>]+>/g, '')}" loading="lazy">`
+    : "";
   modal.classList.add("is-open");
   modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
