@@ -1,0 +1,2363 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-page="home">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Y&amp;C Landscaping &amp; Masonry — Hardscape, Stonework &amp; Property Care · Saugus, MA</title>
+<meta name="description" content="Y&amp;C Landscaping &amp; Masonry — hardscape design, retaining walls, patios, walkways, stone walls, fences, and full-season property care across Saugus and the North Shore of Massachusetts." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ────────────────────────── DESIGN TOKENS ────────────────────────── */
+:root {
+  /* light palette — drawn from the Y&C logo: deep brick red, weathered gold, stone */
+  --bg:          #F4EFE6;
+  --bg-alt:      #EAE2D2;
+  --bg-deep:     #DDD2BE;
+  --surface:     #FBF7EE;
+  --ink:         #161311;
+  --ink-soft:    #3A3530;
+  --ink-mute:    #6E665B;
+  --line:        #CDC1A6;
+  --accent:      #A8302A;       /* deep brick red — from logo banner */
+  --accent-deep: #7E1F1B;
+  --moss:        #2E4A2E;       /* deep landscape green */
+  --moss-soft:   #5E7B53;
+  --stone:       #837A6A;
+  --gold:        #C5963A;       /* burnished gold — from logo lettering */
+  --gold-soft:   #E2BD6A;
+  --shadow:      0 30px 60px -30px rgba(45, 25, 18, 0.35);
+  --shadow-sm:   0 10px 30px -12px rgba(45, 25, 18, 0.22);
+  --radius:      18px;
+  --radius-sm:   10px;
+  --maxw:        1240px;
+  --gutter:      clamp(20px, 4vw, 56px);
+
+  --display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --body:    'Manrope', 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+[data-theme="dark"] {
+  --bg:          #131110;
+  --bg-alt:      #1B1815;
+  --bg-deep:     #221E18;
+  --surface:     #18150F;
+  --ink:         #F4EFE6;
+  --ink-soft:    #DCD2BB;
+  --ink-mute:    #968D78;
+  --line:        #3A332A;
+  --accent:      #D44642;       /* brighter brick red for dark */
+  --accent-deep: #A8302A;
+  --moss:        #7A9263;
+  --moss-soft:   #9CB283;
+  --stone:       #6C6453;
+  --gold:        #E2BD6A;
+  --gold-soft:   #F2D896;
+  --shadow:      0 30px 60px -30px rgba(0, 0, 0, 0.7);
+  --shadow-sm:   0 10px 30px -12px rgba(0, 0, 0, 0.55);
+}
+
+/* ────────────────────────── RESET ────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  min-height: 100vh;
+  transition: background 0.5s ease, color 0.5s ease;
+  background-image:
+    radial-gradient(1200px 800px at 110% -10%, rgba(180, 71, 31, 0.07), transparent 60%),
+    radial-gradient(900px 700px at -10% 110%, rgba(74, 90, 54, 0.08), transparent 60%);
+}
+[data-theme="dark"] body {
+  background-image:
+    radial-gradient(1200px 800px at 110% -10%, rgba(216, 116, 70, 0.10), transparent 60%),
+    radial-gradient(900px 700px at -10% 110%, rgba(138, 155, 105, 0.07), transparent 60%);
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+input, textarea, select { font: inherit; color: inherit; }
+
+/* ────────────────────────── TYPOGRAPHY ────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--display);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5em;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+}
+h1 { font-size: clamp(2.6rem, 6.5vw, 5.4rem); }
+h2 { font-size: clamp(2rem, 4.6vw, 3.6rem); }
+h3 { font-size: clamp(1.45rem, 2.4vw, 2rem); }
+h4 { font-size: 1.18rem; letter-spacing: -0.01em; }
+p  { margin: 0 0 1em; color: var(--ink-soft); }
+.eyebrow {
+  font-family: var(--body);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-weight: 600;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 1.5px;
+  background: var(--accent);
+  display: inline-block;
+}
+em.italic { font-family: var(--display); font-style: italic; font-weight: 400; color: var(--accent); font-size: 1.05em; }
+
+/* ────────────────────────── LAYOUT ────────────────────────── */
+.wrap { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
+.section { padding-block: clamp(70px, 10vw, 130px); position: relative; }
+.section.compact { padding-block: clamp(50px, 7vw, 90px); }
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line), transparent);
+  margin-block: 0;
+}
+
+/* ────────────────────────── ANNOUNCEMENT BAR ────────────────────────── */
+.announce {
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 11px var(--gutter);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+[data-theme="dark"] .announce { background: var(--accent); color: #14130F; }
+.announce .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2.5s ease-in-out infinite; }
+[data-theme="dark"] .announce .dot { background: #14130F; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+/* ────────────────────────── HEADER ────────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent);
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 18px;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.brand-mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+  display: grid;
+  place-items: center;
+  color: var(--gold-soft);
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  box-shadow: inset 0 0 0 1px rgba(226, 189, 106, 0.35), 0 6px 14px -6px rgba(168, 48, 42, 0.55);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.25);
+}
+.brand .amp { color: var(--gold); font-style: italic; font-weight: 400; }
+.brand .brand-sub { display: block; font-family: var(--body); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); margin-top: -2px; }
+@media (max-width: 640px) { .brand .brand-sub { display: none; } }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nav-link {
+  position: relative;
+  padding: 9px 16px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  border-radius: 999px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.nav-link:hover { color: var(--ink); background: color-mix(in srgb, var(--bg-alt) 70%, transparent); }
+.nav-link.is-active { color: var(--ink); background: var(--bg-alt); }
+
+.nav-cta-group { display: flex; align-items: center; gap: 8px; }
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.icon-btn:hover { background: var(--bg-alt); transform: translateY(-1px); }
+.icon-btn svg { width: 18px; height: 18px; }
+.theme-toggle .sun { display: none; }
+.theme-toggle .moon { display: block; }
+[data-theme="dark"] .theme-toggle .sun { display: block; }
+[data-theme="dark"] .theme-toggle .moon { display: none; }
+.hamburger { display: none; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 13px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #FBF7EE;
+  box-shadow: 0 10px 22px -10px rgba(180, 71, 31, 0.55), inset 0 0 0 1px rgba(255,255,255,0.08);
+}
+.btn-primary:hover { transform: translateY(-2px); background: var(--accent-deep); box-shadow: 0 18px 32px -12px rgba(180, 71, 31, 0.65); }
+.btn-ghost { color: var(--ink); border: 1px solid var(--line); }
+.btn-ghost:hover { background: var(--bg-alt); }
+.btn-large { padding: 16px 28px; font-size: 1rem; }
+.btn .arrow { transition: transform 0.25s ease; }
+.btn:hover .arrow { transform: translateX(3px); }
+
+/* ────────────────────────── PAGES (SPA) ────────────────────────── */
+.page { display: none; animation: pageIn 0.45s ease both; }
+.page.is-active { display: block; }
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ────────────────────────── HERO ────────────────────────── */
+.hero { position: relative; padding-block: clamp(80px, 11vw, 140px) clamp(60px, 9vw, 110px); overflow: hidden; }
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(40px, 6vw, 80px);
+  align-items: center;
+}
+.hero h1 .accent { color: var(--accent); }
+.hero h1 .script { font-style: italic; font-weight: 300; color: var(--moss); }
+.hero .lead {
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  color: var(--ink-soft);
+  max-width: 38ch;
+  margin-bottom: 32px;
+}
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero-meta {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 3vw, 40px);
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+}
+.hero-meta .num {
+  font-family: var(--display);
+  font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  display: block;
+}
+.hero-meta .label {
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--ink-mute);
+  font-weight: 600;
+  margin-top: 6px;
+  display: block;
+}
+
+/* hero illustration */
+.hero-visual {
+  position: relative;
+  aspect-ratio: 5 / 6;
+  border-radius: 26px;
+  overflow: hidden;
+  background: linear-gradient(160deg, var(--bg-deep), var(--bg-alt));
+  box-shadow: var(--shadow);
+  isolation: isolate;
+}
+.hero-visual svg { width: 100%; height: 100%; display: block; }
+.hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 80% 10%, rgba(196, 147, 80, 0.25), transparent 50%),
+    radial-gradient(circle at 10% 100%, rgba(74, 90, 54, 0.25), transparent 60%);
+  pointer-events: none;
+}
+.hero-badge {
+  position: absolute;
+  bottom: 22px;
+  left: 22px;
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 14px 18px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 80%;
+}
+.hero-badge .star { color: var(--gold); font-size: 1.05rem; line-height: 1; }
+.hero-badge .copy { font-size: 0.84rem; color: var(--ink-soft); line-height: 1.35; }
+.hero-badge .copy b { color: var(--ink); font-weight: 700; }
+
+/* fade up entrance */
+.fade-up { opacity: 0; transform: translateY(22px); }
+.is-revealed.fade-up { animation: fadeUp 0.75s cubic-bezier(.2,.7,.2,1) forwards; }
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+.delay-1 { animation-delay: 0.08s; }
+.delay-2 { animation-delay: 0.16s; }
+.delay-3 { animation-delay: 0.24s; }
+.delay-4 { animation-delay: 0.32s; }
+.delay-5 { animation-delay: 0.40s; }
+
+/* ────────────────────────── MARQUEE STRIP ────────────────────────── */
+.marquee {
+  background: var(--ink);
+  color: var(--bg);
+  overflow: hidden;
+  padding-block: 22px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+[data-theme="dark"] .marquee { background: var(--bg-deep); color: var(--ink); border-color: var(--bg-deep); }
+.marquee-track {
+  display: flex;
+  gap: 50px;
+  animation: scroll 38s linear infinite;
+  white-space: nowrap;
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+}
+.marquee-track span { display: inline-flex; align-items: center; gap: 50px; }
+.marquee-track .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ────────────────────────── SERVICES TEASER (HOME) ────────────────────────── */
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 30px;
+  margin-bottom: 56px;
+  flex-wrap: wrap;
+}
+.section-head .left { max-width: 640px; }
+.section-head h2 { margin: 10px 0 0; }
+.section-head .right { color: var(--ink-mute); max-width: 320px; font-size: 0.94rem; }
+
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+.svc-card {
+  text-align: left;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 28px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.svc-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--accent); }
+.svc-card .ico {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: var(--bg-deep);
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+  margin-bottom: 22px;
+}
+.svc-card .ico svg { width: 26px; height: 26px; }
+.svc-card h3 { font-size: 1.45rem; margin-bottom: 10px; }
+.svc-card p { font-size: 0.95rem; margin-bottom: 22px; }
+.svc-card .more {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+}
+.svc-card::before {
+  content: "";
+  position: absolute;
+  inset: auto -40% -50% auto;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.svc-card:hover::before { opacity: 1; }
+
+/* ────────────────────────── PROPERTY CARE GRID ────────────────────────── */
+.care-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+.care-card {
+  text-align: left;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 52px 1fr 24px;
+  gap: 18px;
+  align-items: center;
+  padding: 22px 24px;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.care-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); border-color: var(--accent); }
+.care-ico {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--moss) 14%, transparent);
+  color: var(--moss);
+  display: grid;
+  place-items: center;
+}
+[data-theme="dark"] .care-ico { color: var(--moss-soft); }
+.care-ico svg { width: 24px; height: 24px; }
+.care-card h4 { margin: 0 0 4px; font-size: 1.1rem; }
+.care-card p  { margin: 0; font-size: 0.88rem; color: var(--ink-mute); }
+.care-arrow { color: var(--accent); font-weight: 700; font-size: 1.1rem; transition: transform 0.25s ease; }
+.care-card:hover .care-arrow { transform: translateX(4px); }
+
+/* ────────────────────────── PROCESS (HOME) ────────────────────────── */
+.process {
+  background: var(--bg-alt);
+  border-radius: 28px;
+  padding: clamp(40px, 6vw, 70px);
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(30px, 5vw, 70px);
+  align-items: center;
+}
+.process-steps { list-style: none; padding: 0; margin: 0; counter-reset: step; }
+.process-steps li {
+  counter-increment: step;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 22px;
+  align-items: start;
+}
+.process-steps li:last-child { border-bottom: 0; }
+.process-steps li::before {
+  content: counter(step, decimal-leading-zero);
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--accent);
+  line-height: 1;
+}
+.process-steps h4 { margin-bottom: 6px; }
+.process-steps p { margin-bottom: 0; font-size: 0.94rem; }
+
+/* ────────────────────────── FEATURED PROJECT (HOME) ────────────────────────── */
+.feature-card {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 0;
+  border-radius: 26px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.feature-art {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, var(--moss), var(--moss-soft));
+  overflow: hidden;
+}
+.feature-art svg { width: 100%; height: 100%; }
+.feature-art .ribbon {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  padding: 8px 14px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.feature-art .ribbon .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.feature-body { padding: clamp(30px, 4vw, 50px); display: flex; flex-direction: column; gap: 18px; }
+.feature-body h3 { margin: 0; }
+.feature-body .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* ────────────────────────── PILLS / TAGS ────────────────────────── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.78rem;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--bg-deep);
+  color: var(--ink-soft);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 1px solid color-mix(in srgb, var(--line) 50%, transparent);
+}
+.pill.accent { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); border-color: color-mix(in srgb, var(--accent) 25%, transparent); }
+.pill.moss   { background: color-mix(in srgb, var(--moss) 14%, transparent); color: var(--moss); border-color: color-mix(in srgb, var(--moss) 25%, transparent); }
+[data-theme="dark"] .pill.moss { color: var(--moss-soft); }
+
+/* ────────────────────────── TESTIMONIAL (HOME) ────────────────────────── */
+.testimonial {
+  text-align: center;
+  max-width: 880px;
+  margin: 0 auto;
+  padding-block: clamp(40px, 6vw, 70px);
+}
+.testimonial blockquote {
+  font-family: var(--display);
+  font-size: clamp(1.55rem, 3vw, 2.3rem);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  font-weight: 400;
+  margin: 0 0 28px;
+}
+.testimonial blockquote .q { color: var(--accent); font-style: italic; }
+.testimonial cite {
+  font-style: normal;
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-mute);
+  font-weight: 600;
+}
+
+/* ────────────────────────── SERVICES PAGE ────────────────────────── */
+.page-hero { padding-block: clamp(70px, 9vw, 120px) clamp(40px, 6vw, 60px); }
+.page-hero h1 { margin-bottom: 20px; }
+.page-hero .lead { font-size: clamp(1.05rem, 1.4vw, 1.2rem); color: var(--ink-soft); max-width: 60ch; margin: 0; }
+
+.svc-full {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 18px;
+}
+.svc-tile {
+  text-align: left;
+  width: 100%;
+  padding: 36px 30px;
+  border-radius: 22px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.svc-tile:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--accent); }
+.svc-tile .num {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+}
+.svc-tile h3 { margin: 0; font-size: 1.55rem; }
+.svc-tile p { margin: 0; font-size: 0.95rem; }
+.svc-tile .extras { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 4px; }
+.svc-tile .open {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin-top: 4px;
+}
+
+/* ────────────────────────── PORTFOLIO PAGE ────────────────────────── */
+.portfolio-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.filter-btn {
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
+  background: transparent;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+.filter-btn:hover { color: var(--ink); }
+.filter-btn.is-active { color: #FBF7EE; background: var(--accent); border-color: var(--accent); }
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 18px;
+}
+.proj {
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.proj:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+.proj-art { aspect-ratio: 4 / 3; position: relative; overflow: hidden; }
+.proj-art svg { width: 100%; height: 100%; }
+.proj-body { padding: 22px 22px 24px; }
+.proj-body .meta { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--ink-mute); font-weight: 700; margin-bottom: 8px; }
+.proj-body h4 { margin: 0 0 6px; font-size: 1.22rem; }
+.proj-body p { margin: 0; color: var(--ink-mute); font-size: 0.9rem; }
+
+.proj.lg  { grid-column: span 8; }
+.proj.med { grid-column: span 6; }
+.proj.sm  { grid-column: span 4; }
+@media (max-width: 880px) {
+  .proj.lg, .proj.med, .proj.sm { grid-column: span 12; }
+}
+
+/* ────────────────────────── ABOUT PAGE ────────────────────────── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: center;
+}
+.about-visual {
+  aspect-ratio: 1 / 1.05;
+  border-radius: 26px;
+  overflow: hidden;
+  background: linear-gradient(140deg, var(--moss), var(--moss-soft));
+  position: relative;
+  box-shadow: var(--shadow);
+}
+.about-visual svg { width: 100%; height: 100%; }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-block: clamp(50px, 7vw, 80px) 0;
+}
+.stat {
+  padding: 30px 26px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.stat .num {
+  font-family: var(--display);
+  font-size: clamp(2rem, 3.4vw, 2.8rem);
+  color: var(--accent);
+  letter-spacing: -0.03em;
+  display: block;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.stat .lbl { font-size: 0.86rem; color: var(--ink-soft); }
+
+.values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.value {
+  padding: 32px 26px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.value .ico {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--bg-deep);
+  color: var(--accent);
+  display: grid;
+  place-items: center;
+  margin-bottom: 18px;
+}
+.value h4 { margin-bottom: 6px; font-size: 1.2rem; }
+.value p { margin: 0; font-size: 0.93rem; }
+
+.team {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+.team-card {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 24px;
+  align-items: center;
+  padding: 28px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.team-avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+  display: grid;
+  place-items: center;
+  color: #FBF7EE;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 3rem;
+  letter-spacing: -0.04em;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.18);
+}
+.team-card.moss .team-avatar { background: linear-gradient(135deg, var(--moss), var(--moss-soft)); }
+.team-card h4 { margin: 0 0 4px; }
+.team-card .role { color: var(--accent); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 10px; }
+.team-card p { margin: 0; font-size: 0.93rem; }
+
+/* ────────────────────────── CONTACT PAGE ────────────────────────── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(40px, 5vw, 70px);
+  align-items: start;
+}
+.info-card {
+  padding: 36px 32px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.info-card + .info-card { margin-top: 18px; }
+.info-card .hdr {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.info-card .ico {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--bg-deep);
+  color: var(--accent);
+  display: grid;
+  place-items: center;
+}
+.info-card h4 { margin: 0; font-size: 1.2rem; }
+.info-card .big {
+  font-family: var(--display);
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 6px;
+  display: block;
+}
+.info-card a.big { color: var(--ink); text-decoration: none; }
+.info-card a.big:hover { color: var(--accent); }
+
+.hours { width: 100%; border-collapse: collapse; }
+.hours td {
+  padding: 11px 0;
+  border-top: 1px solid var(--line);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+.hours tr:first-child td { border-top: 0; }
+.hours td:last-child { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink); }
+.hours tr.today td { color: var(--accent); font-weight: 700; }
+.hours tr.today td:last-child { color: var(--accent); }
+
+.contact-form { display: flex; flex-direction: column; gap: 14px; }
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--ink-mute); font-weight: 600; }
+.field input, .field select, .field textarea {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 0.98rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  font-family: var(--body);
+}
+.field textarea { min-height: 140px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent);
+}
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-card {
+  padding: 36px 32px;
+  background: var(--bg-alt);
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+}
+.form-card h3 { margin-bottom: 6px; }
+.form-card .sub { color: var(--ink-mute); margin-bottom: 26px; font-size: 0.95rem; }
+.form-success {
+  background: color-mix(in srgb, var(--moss) 15%, transparent);
+  color: var(--moss);
+  border: 1px solid color-mix(in srgb, var(--moss) 35%, transparent);
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 0.94rem;
+  font-weight: 600;
+  margin-top: 14px;
+  display: none;
+}
+.form-success.is-shown { display: block; }
+[data-theme="dark"] .form-success { color: var(--moss-soft); }
+
+/* ────────────────────────── CTA BAND ────────────────────────── */
+.cta-band {
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 28px;
+  padding: clamp(40px, 6vw, 70px);
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+[data-theme="dark"] .cta-band { background: var(--bg-deep); }
+.cta-band::before {
+  content: "";
+  position: absolute;
+  inset: auto -10% -40% auto;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(180, 71, 31, 0.4), transparent 60%);
+  pointer-events: none;
+}
+.cta-band h2 { color: var(--bg); margin: 0; max-width: 14ch; }
+.cta-band p { color: color-mix(in srgb, var(--bg) 75%, transparent); margin: 14px 0 0; max-width: 38ch; }
+.cta-band .actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.cta-band .btn-primary { background: var(--accent); }
+.cta-band .btn-ghost { color: var(--bg); border-color: color-mix(in srgb, var(--bg) 30%, transparent); }
+.cta-band .btn-ghost:hover { background: color-mix(in srgb, var(--bg) 12%, transparent); }
+
+/* ────────────────────────── FOOTER ────────────────────────── */
+.site-footer {
+  background: var(--bg-alt);
+  padding-block: clamp(50px, 7vw, 80px) 24px;
+  border-top: 1px solid var(--line);
+}
+.foot-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+.foot-brand p { margin: 16px 0 0; max-width: 32ch; font-size: 0.93rem; color: var(--ink-mute); }
+.foot-col h5 {
+  font-family: var(--body);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-mute);
+  font-weight: 700;
+  margin: 0 0 18px;
+}
+.foot-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; }
+.foot-col a { font-size: 0.96rem; color: var(--ink-soft); transition: color 0.2s ease; }
+.foot-col a:hover { color: var(--accent); }
+.foot-legal {
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 0.84rem;
+  color: var(--ink-mute);
+}
+
+/* ────────────────────────── MODAL ────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: color-mix(in srgb, var(--ink) 50%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.modal-overlay.is-open { display: flex; opacity: 1; }
+.modal {
+  background: var(--surface);
+  border-radius: 24px;
+  max-width: 620px;
+  width: 100%;
+  max-height: 88vh;
+  overflow: auto;
+  padding: 0;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  transform: scale(0.96) translateY(8px);
+  transition: transform 0.3s ease;
+}
+.modal-overlay.is-open .modal { transform: scale(1) translateY(0); }
+.modal-art {
+  aspect-ratio: 16 / 8;
+  background: linear-gradient(140deg, var(--moss), var(--moss-soft));
+  position: relative;
+  overflow: hidden;
+}
+.modal-art svg { width: 100%; height: 100%; }
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+  z-index: 2;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.modal-close:hover { background: var(--bg-deep); transform: rotate(90deg); }
+.modal-body { padding: 32px 36px 36px; }
+.modal-body .num { color: var(--accent); font-family: var(--display); font-style: italic; }
+.modal-body h3 { font-size: clamp(1.6rem, 3.2vw, 2.1rem); margin: 8px 0 16px; }
+.modal-body .desc { color: var(--ink-soft); margin-bottom: 22px; }
+.modal-body .extras-label, .modal-body .fun-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-mute);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.modal-body .extras { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+.modal-body .fun {
+  background: color-mix(in srgb, var(--gold) 18%, transparent);
+  border-left: 3px solid var(--gold);
+  border-radius: 10px;
+  padding: 16px 18px;
+  font-size: 0.94rem;
+  color: var(--ink);
+}
+.modal-body .fun b { color: var(--accent); font-weight: 700; }
+.modal-body .price {
+  font-family: var(--display);
+  font-style: italic;
+  color: var(--ink);
+  font-size: 1rem;
+  margin-top: 4px;
+  margin-bottom: 18px;
+  display: block;
+}
+
+/* ────────────────────────── MOBILE NAV ────────────────────────── */
+@media (max-width: 940px) {
+  .nav-links { display: none; }
+  .hamburger {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
+    border: 1px solid var(--line);
+  }
+  .hamburger svg { width: 18px; height: 18px; }
+  .nav-cta-group .btn { display: none; }
+
+  body.menu-open { overflow: hidden; }
+  body.menu-open .mobile-menu { display: flex; }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    background: var(--bg);
+    padding: 100px 28px 40px;
+    flex-direction: column;
+    gap: 12px;
+    animation: pageIn 0.3s ease;
+  }
+  .mobile-menu a {
+    font-family: var(--display);
+    font-size: 2rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .mobile-menu a.is-active { color: var(--accent); font-style: italic; }
+  .mobile-menu .btn { margin-top: 22px; align-self: flex-start; }
+}
+
+/* ────────────────────────── RESPONSIVE TIDY ────────────────────────── */
+@media (max-width: 980px) {
+  .hero-grid, .feature-card, .process, .about-grid, .contact-grid, .cta-band, .foot-grid {
+    grid-template-columns: 1fr;
+  }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .values { grid-template-columns: 1fr; }
+  .team { grid-template-columns: 1fr; }
+  .foot-grid { grid-template-columns: 1fr 1fr; }
+  .cta-band .actions { justify-self: start; }
+  .feature-art { aspect-ratio: 16 / 10; }
+}
+@media (max-width: 560px) {
+  .hero-meta { grid-template-columns: 1fr; gap: 18px; padding-top: 24px; }
+  .hero-meta > div { padding-block: 8px; border-bottom: 1px solid var(--line); }
+  .hero-meta > div:last-child { border-bottom: 0; }
+  .stats { grid-template-columns: 1fr; }
+  .team-card { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+  .field-row { grid-template-columns: 1fr; }
+  .foot-grid { grid-template-columns: 1fr; }
+}
+
+/* ────────────────────────── A11Y ────────────────────────── */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ──────────── ANNOUNCEMENT BAR ──────────── -->
+<div class="announce" role="status">
+  <span class="dot"></span>
+  <span>Now booking 2026 spring &amp; summer builds — limited slots</span>
+  <span class="dot"></span>
+</div>
+
+<!-- ──────────── HEADER / NAV ──────────── -->
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="#home" class="brand" data-nav="home" aria-label="Y&amp;C Landscaping &amp; Masonry home">
+      <span class="brand-mark">Y&amp;C</span>
+      <span>Y<span class="amp">&amp;</span>C <span class="brand-sub">Landscaping &amp; Masonry</span></span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        <li><a class="nav-link" href="#home"      data-nav="home">Home</a></li>
+        <li><a class="nav-link" href="#services"  data-nav="services">Services</a></li>
+        <li><a class="nav-link" href="#portfolio" data-nav="portfolio">Portfolio</a></li>
+        <li><a class="nav-link" href="#about"     data-nav="about">About</a></li>
+        <li><a class="nav-link" href="#visit"     data-nav="visit">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta-group">
+      <button class="icon-btn theme-toggle" aria-label="Toggle color theme" id="themeToggle">
+        <svg class="sun"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="#visit" data-nav="visit" class="btn btn-primary">Free Quote <span class="arrow">→</span></a>
+      <button class="hamburger" aria-label="Open menu" id="hamburgerBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ──────────── MOBILE MENU ──────────── -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="#home"      data-nav="home">Home</a>
+  <a href="#services"  data-nav="services">Services</a>
+  <a href="#portfolio" data-nav="portfolio">Portfolio</a>
+  <a href="#about"     data-nav="about">About</a>
+  <a href="#visit"     data-nav="visit">Contact</a>
+  <a href="#visit"     data-nav="visit" class="btn btn-primary">Free Quote →</a>
+</div>
+
+<main id="main">
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE: HOME
+════════════════════════════════════════════════════════════════ -->
+<section class="page is-active" id="page-home" data-page="home">
+
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow fade-up">Hardscape · Masonry · Fence · Property Care</span>
+        <h1 class="fade-up delay-1">Stone laid with <span class="script">care</span>, <br/>built to <span class="accent">outlast</span> us.</h1>
+        <p class="lead fade-up delay-2">
+          Y<span style="color:var(--gold)">&amp;</span>C Landscaping &amp; Masonry is a family-run, craft-first studio out of Saugus. We design and build retaining walls, patios, walkways, stone walls, and fences — and care for the property the rest of the year.
+        </p>
+        <div class="hero-ctas fade-up delay-3">
+          <a href="#visit" data-nav="visit" class="btn btn-primary btn-large">Get a Free Quote <span class="arrow">→</span></a>
+          <a href="#portfolio" data-nav="portfolio" class="btn btn-ghost btn-large">See Our Work</a>
+        </div>
+        <div class="hero-meta fade-up delay-4">
+          <div><span class="num">15+</span><span class="label">Years on the trowel</span></div>
+          <div><span class="num">340+</span><span class="label">Builds completed</span></div>
+          <div><span class="num">5★</span><span class="label">Across the board</span></div>
+        </div>
+      </div>
+      <div class="hero-visual fade-up delay-2" aria-hidden="true">
+        <!-- hand-crafted hero illustration: layered stone wall with foliage + sun -->
+        <svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%"  stop-color="#E8C994"/>
+              <stop offset="60%" stop-color="#C49350"/>
+              <stop offset="100%" stop-color="#8C3617"/>
+            </linearGradient>
+            <linearGradient id="stoneGrad" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#B8AC92"/>
+              <stop offset="100%" stop-color="#857A5F"/>
+            </linearGradient>
+            <linearGradient id="leafGrad" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0%" stop-color="#6E7F58"/>
+              <stop offset="100%" stop-color="#4A5A36"/>
+            </linearGradient>
+            <radialGradient id="sun" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0%" stop-color="#FBF7EE"/>
+              <stop offset="100%" stop-color="#E8C994" stop-opacity="0"/>
+            </radialGradient>
+            <pattern id="stoneTex" width="6" height="6" patternUnits="userSpaceOnUse">
+              <circle cx="1" cy="1" r="0.6" fill="rgba(0,0,0,0.07)"/>
+              <circle cx="4" cy="3" r="0.4" fill="rgba(255,255,255,0.1)"/>
+              <circle cx="2" cy="5" r="0.3" fill="rgba(0,0,0,0.05)"/>
+            </pattern>
+          </defs>
+
+          <!-- sky -->
+          <rect width="500" height="600" fill="url(#sky)"/>
+          <!-- sun -->
+          <circle cx="360" cy="180" r="120" fill="url(#sun)"/>
+          <circle cx="360" cy="180" r="44" fill="#FBF7EE" opacity="0.85"/>
+
+          <!-- distant hills -->
+          <path d="M0,340 C120,310 180,330 280,320 C360,312 420,328 500,300 L500,420 L0,420 Z" fill="#4A5A36" opacity="0.85"/>
+          <path d="M0,380 C100,365 200,372 320,360 C400,352 460,365 500,350 L500,430 L0,430 Z" fill="#2E3A22"/>
+
+          <!-- stone wall (foreground) — stacked irregular stones -->
+          <g>
+            <!-- bottom course -->
+            <rect x="0"   y="430" width="120" height="56" rx="6" fill="url(#stoneGrad)"/>
+            <rect x="0"   y="430" width="120" height="56" rx="6" fill="url(#stoneTex)"/>
+            <rect x="120" y="430" width="86"  height="56" rx="4" fill="#9A8E72"/>
+            <rect x="120" y="430" width="86"  height="56" rx="4" fill="url(#stoneTex)"/>
+            <rect x="206" y="430" width="110" height="56" rx="5" fill="url(#stoneGrad)"/>
+            <rect x="206" y="430" width="110" height="56" rx="5" fill="url(#stoneTex)"/>
+            <rect x="316" y="430" width="92"  height="56" rx="4" fill="#A89B7E"/>
+            <rect x="316" y="430" width="92"  height="56" rx="4" fill="url(#stoneTex)"/>
+            <rect x="408" y="430" width="92"  height="56" rx="5" fill="url(#stoneGrad)"/>
+            <rect x="408" y="430" width="92"  height="56" rx="5" fill="url(#stoneTex)"/>
+            <!-- middle course -->
+            <rect x="0"   y="486" width="92"  height="50" rx="4" fill="#A89B7E"/>
+            <rect x="0"   y="486" width="92"  height="50" rx="4" fill="url(#stoneTex)"/>
+            <rect x="92"  y="486" width="120" height="50" rx="6" fill="url(#stoneGrad)"/>
+            <rect x="92"  y="486" width="120" height="50" rx="6" fill="url(#stoneTex)"/>
+            <rect x="212" y="486" width="86"  height="50" rx="4" fill="#9A8E72"/>
+            <rect x="212" y="486" width="86"  height="50" rx="4" fill="url(#stoneTex)"/>
+            <rect x="298" y="486" width="116" height="50" rx="5" fill="url(#stoneGrad)"/>
+            <rect x="298" y="486" width="116" height="50" rx="5" fill="url(#stoneTex)"/>
+            <rect x="414" y="486" width="86"  height="50" rx="4" fill="#A89B7E"/>
+            <rect x="414" y="486" width="86"  height="50" rx="4" fill="url(#stoneTex)"/>
+            <!-- top course -->
+            <rect x="0"   y="536" width="108" height="50" rx="5" fill="url(#stoneGrad)"/>
+            <rect x="0"   y="536" width="108" height="50" rx="5" fill="url(#stoneTex)"/>
+            <rect x="108" y="536" width="96"  height="50" rx="4" fill="#9A8E72"/>
+            <rect x="108" y="536" width="96"  height="50" rx="4" fill="url(#stoneTex)"/>
+            <rect x="204" y="536" width="120" height="50" rx="6" fill="url(#stoneGrad)"/>
+            <rect x="204" y="536" width="120" height="50" rx="6" fill="url(#stoneTex)"/>
+            <rect x="324" y="536" width="92"  height="50" rx="4" fill="#A89B7E"/>
+            <rect x="324" y="536" width="92"  height="50" rx="4" fill="url(#stoneTex)"/>
+            <rect x="416" y="536" width="84"  height="50" rx="4" fill="url(#stoneGrad)"/>
+            <rect x="416" y="536" width="84"  height="50" rx="4" fill="url(#stoneTex)"/>
+            <!-- highlights -->
+            <path d="M0,430 L500,430" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+            <path d="M0,486 L500,486" stroke="rgba(0,0,0,0.18)" stroke-width="1"/>
+            <path d="M0,536 L500,536" stroke="rgba(0,0,0,0.18)" stroke-width="1"/>
+          </g>
+
+          <!-- foliage on top of wall -->
+          <g fill="url(#leafGrad)">
+            <ellipse cx="90"  cy="425" rx="36" ry="14"/>
+            <ellipse cx="220" cy="420" rx="48" ry="18"/>
+            <ellipse cx="360" cy="425" rx="40" ry="14"/>
+            <ellipse cx="460" cy="422" rx="34" ry="13"/>
+          </g>
+          <!-- swirly grass tufts -->
+          <g stroke="#4A5A36" stroke-width="2" fill="none" stroke-linecap="round">
+            <path d="M70 422 Q72 410 80 408"/>
+            <path d="M100 423 Q98 412 92 408"/>
+            <path d="M210 416 Q212 404 220 400"/>
+            <path d="M236 417 Q234 405 228 400"/>
+            <path d="M350 422 Q352 410 360 406"/>
+            <path d="M380 421 Q378 410 372 406"/>
+          </g>
+
+          <!-- decorative leaf branch front-right -->
+          <g transform="translate(40, 540)" stroke="#2E3A22" stroke-width="2" fill="none">
+            <path d="M0,0 Q-10,-30 -8,-60"/>
+            <ellipse cx="-12" cy="-20" rx="6" ry="3" fill="#6E7F58" stroke="none" transform="rotate(-25 -12 -20)"/>
+            <ellipse cx="-4"  cy="-38" rx="6" ry="3" fill="#6E7F58" stroke="none" transform="rotate(20 -4 -38)"/>
+            <ellipse cx="-12" cy="-56" rx="6" ry="3" fill="#6E7F58" stroke="none" transform="rotate(-15 -12 -56)"/>
+          </g>
+        </svg>
+        <div class="hero-badge">
+          <span class="star">★★★★★</span>
+          <span class="copy"><b>“They built a wall that looks like it’s been there 100 years.”</b><br/>— Local homeowner</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Retaining Walls <span class="dot"></span> Walkways <span class="dot"></span> Patios <span class="dot"></span> Stone Walls <span class="dot"></span> Fences <span class="dot"></span> Spring Cleanups <span class="dot"></span> Mulch &amp; Edging <span class="dot"></span> Hardscape Design <span class="dot"></span></span>
+      <span>Retaining Walls <span class="dot"></span> Walkways <span class="dot"></span> Patios <span class="dot"></span> Stone Walls <span class="dot"></span> Fences <span class="dot"></span> Spring Cleanups <span class="dot"></span> Mulch &amp; Edging <span class="dot"></span> Hardscape Design <span class="dot"></span></span>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="left">
+          <span class="eyebrow fade-up">What we build</span>
+          <h2 class="fade-up delay-1">Beautiful work that <em class="italic">earns its place</em> in the landscape.</h2>
+        </div>
+        <div class="right fade-up delay-2">Every project is bid, drawn, and built by the same crew. No subs disappearing on day three.</div>
+      </div>
+
+      <div class="svc-grid">
+        <button class="svc-card fade-up" onclick="openService('hardscape')">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-6h6v6"/><path d="M3 9h18"/></svg></div>
+          <h3>Hardscape Design</h3>
+          <p>Full-property plans that turn raw slopes and bare yards into outdoor rooms you actually use.</p>
+          <span class="more">Learn more →</span>
+        </button>
+        <button class="svc-card fade-up delay-1" onclick="openService('retaining')">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="14" width="6" height="6" rx="1"/><rect x="9" y="14" width="6" height="6" rx="1"/><rect x="16" y="14" width="6" height="6" rx="1"/><rect x="5" y="7" width="6" height="6" rx="1"/><rect x="12" y="7" width="6" height="6" rx="1"/></svg></div>
+          <h3>Retaining Walls</h3>
+          <p>Engineered for the hill, dressed for the house. Block, fieldstone, or formal cut stone.</p>
+          <span class="more">Learn more →</span>
+        </button>
+        <button class="svc-card fade-up delay-2" onclick="openService('patios')">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+          <h3>Patios &amp; Walkways</h3>
+          <p>Bluestone, brick, paver — built on a base that lasts decades, not seasons.</p>
+          <span class="more">Learn more →</span>
+        </button>
+        <button class="svc-card fade-up delay-3" onclick="openService('stonewalls')">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h18M3 16h18"/><path d="M7 4v4M14 4v4M11 12v4M18 12v4M7 20v-4M14 20v-4"/></svg></div>
+          <h3>Stone Walls</h3>
+          <p>Dry-stacked New England fieldstone or mortared formal walls. Every stone hand-picked.</p>
+          <span class="more">Learn more →</span>
+        </button>
+        <button class="svc-card fade-up delay-4" onclick="openService('masonry')">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9-9 9z"/><path d="M9 12l3-3 3 3-3 3z"/></svg></div>
+          <h3>Custom Masonry</h3>
+          <p>Steps, pillars, fire pits, outdoor kitchens, chimneys. If it’s stone, brick, or block — we build it.</p>
+          <span class="more">Learn more →</span>
+        </button>
+        <button class="svc-card fade-up delay-5" onclick="openService('fence')">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l2-3 2 3v11H4zM10 9l2-3 2 3v11h-4zM16 9l2-3 2 3v11h-4z"/><path d="M2 13h20M2 17h20"/></svg></div>
+          <h3>Fence Installation</h3>
+          <p>Cedar, vinyl, ornamental metal, ag-style. Set in concrete, lined to your survey, plumb to the inch.</p>
+          <span class="more">Learn more →</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section compact" id="care-home">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="left">
+          <span class="eyebrow fade-up">Year-round property care</span>
+          <h2 class="fade-up delay-1">Between the big builds — <em class="italic">we keep your place sharp</em>.</h2>
+        </div>
+        <div class="right fade-up delay-2">From the first spring cleanup to the last leaf pickup, we keep your property tidy, healthy, and ready for the season ahead.</div>
+      </div>
+      <div class="care-grid">
+        <button class="care-card fade-up" onclick="openService('cleanup')">
+          <div class="care-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 22v-6M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M2 12h6M22 12h-6M4.93 19.07l4.24-4.24M14.83 9.17l4.24-4.24"/></svg></div>
+          <div>
+            <h4>Spring &amp; Fall Cleanups</h4>
+            <p>Beds raked clean, debris hauled, edges sharpened. The whole property reset for the season.</p>
+          </div>
+          <span class="care-arrow">→</span>
+        </button>
+        <button class="care-card fade-up delay-1" onclick="openService('mowing')">
+          <div class="care-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 16l4-4 3 3 5-7 5 8"/></svg></div>
+          <div>
+            <h4>Lawn Care &amp; Mowing</h4>
+            <p>Weekly or biweekly mow, trim, blow. Sharp blades, clean lines, no missed corners.</p>
+          </div>
+          <span class="care-arrow">→</span>
+        </button>
+        <button class="care-card fade-up delay-2" onclick="openService('edging')">
+          <div class="care-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg></div>
+          <div>
+            <h4>Bed Edging &amp; Definition</h4>
+            <p>Crisp cut edges around every garden bed, walkway, and tree. The thing that makes a yard look professional.</p>
+          </div>
+          <span class="care-arrow">→</span>
+        </button>
+        <button class="care-card fade-up delay-3" onclick="openService('mulch')">
+          <div class="care-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-6 7 6v12"/><path d="M9 21V13h6v8"/></svg></div>
+          <div>
+            <h4>Black Mulch &amp; Bark</h4>
+            <p>Fresh mulch top-up that holds moisture, suppresses weeds, and makes every plant pop. Black, brown, or natural.</p>
+          </div>
+          <span class="care-arrow">→</span>
+        </button>
+        <button class="care-card fade-up delay-4" onclick="openService('leaves')">
+          <div class="care-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19.8 2c1 5 .5 10-7 19"/><path d="M2 22c1.5-1.5 5-5 7-10"/></svg></div>
+          <div>
+            <h4>Leaf Cleanup</h4>
+            <p>Late-fall sweep to the curb, hauled away. Includes gutters and tight beds if you want.</p>
+          </div>
+          <span class="care-arrow">→</span>
+        </button>
+        <button class="care-card fade-up delay-5" onclick="openService('seasonal')">
+          <div class="care-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
+          <div>
+            <h4>Seasonal Programs</h4>
+            <p>Lock in a full-season package — visits, cleanups, mulch, and call-outs — for one flat monthly rate.</p>
+          </div>
+          <span class="care-arrow">→</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section compact">
+    <div class="wrap">
+      <div class="process fade-up">
+        <div>
+          <span class="eyebrow">How we work</span>
+          <h2 style="margin-top:10px;">A simple, honest process — start to finish.</h2>
+          <p style="margin-top:18px;">No high-pressure sales, no surprises on the invoice. You meet the same crew that swings the hammers from your first walk-through to the final brush-off.</p>
+          <a href="#visit" data-nav="visit" class="btn btn-primary" style="margin-top:18px;">Start your project <span class="arrow">→</span></a>
+        </div>
+        <ol class="process-steps">
+          <li><div><h4>On-site walk-through</h4><p>We come out, listen, measure, and talk through what’s possible — never charge for the visit.</p></div></li>
+          <li><div><h4>Design &amp; estimate</h4><p>Hand sketches, material samples, and a line-item quote you can actually read.</p></div></li>
+          <li><div><h4>Build, by our crew</h4><p>Excavation, base prep, masonry, planting. Site stays clean every single day.</p></div></li>
+          <li><div><h4>Walk-back &amp; warranty</h4><p>We don’t leave until you’re happy. Then we come back next spring to check it.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="left">
+          <span class="eyebrow">Latest project</span>
+          <h2 style="margin-top:10px;">A backyard transformed into a true <em class="italic">outdoor room</em>.</h2>
+        </div>
+      </div>
+      <article class="feature-card fade-up">
+        <div class="feature-art">
+          <span class="ribbon"><span class="dot"></span> Completed Oct 2025</span>
+          <!-- patio illustration -->
+          <svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="patioSky" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%"  stop-color="#E0CDA4"/>
+                <stop offset="100%" stop-color="#9A8E72"/>
+              </linearGradient>
+              <linearGradient id="patioStone" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#C2B7A0"/>
+                <stop offset="100%" stop-color="#8E826A"/>
+              </linearGradient>
+            </defs>
+            <rect width="600" height="450" fill="url(#patioSky)"/>
+            <!-- distant tree line -->
+            <ellipse cx="100" cy="240" rx="80" ry="40" fill="#4A5A36" opacity="0.7"/>
+            <ellipse cx="240" cy="220" rx="120" ry="55" fill="#4A5A36" opacity="0.85"/>
+            <ellipse cx="450" cy="225" rx="140" ry="60" fill="#3A4628" opacity="0.9"/>
+            <!-- patio perspective -->
+            <polygon points="100,450 500,450 540,300 60,300" fill="url(#patioStone)"/>
+            <!-- patio pavers grid -->
+            <g stroke="rgba(0,0,0,0.18)" stroke-width="1" fill="none">
+              <line x1="60"  y1="340" x2="540" y2="340"/>
+              <line x1="80"  y1="395" x2="520" y2="395"/>
+              <line x1="180" y1="300" x2="160" y2="450"/>
+              <line x1="300" y1="300" x2="300" y2="450"/>
+              <line x1="420" y1="300" x2="440" y2="450"/>
+            </g>
+            <!-- planter wall -->
+            <rect x="60"  y="270" width="480" height="30" fill="#857A5F"/>
+            <rect x="60"  y="270" width="480" height="30" fill="url(#stoneTex)"/>
+            <!-- fire pit -->
+            <ellipse cx="300" cy="380" rx="50" ry="14" fill="#4A3826"/>
+            <ellipse cx="300" cy="372" rx="50" ry="14" fill="#8C3617"/>
+            <path d="M280 370 Q290 350 300 365 Q310 345 315 365 Q320 350 320 372 L280 372 Z" fill="#D87446"/>
+            <path d="M290 368 Q298 354 304 365 Q310 352 314 368 L290 368 Z" fill="#FBF7EE" opacity="0.7"/>
+            <!-- planters with shrubs -->
+            <rect x="80"  y="240" width="60" height="40" fill="#857A5F"/>
+            <ellipse cx="110" cy="232" rx="34" ry="22" fill="#4A5A36"/>
+            <rect x="460" y="240" width="60" height="40" fill="#857A5F"/>
+            <ellipse cx="490" cy="232" rx="34" ry="22" fill="#4A5A36"/>
+          </svg>
+        </div>
+        <div class="feature-body">
+          <span class="eyebrow">Saugus, MA · 1,800 sq ft</span>
+          <h3>The Marshfield Project</h3>
+          <p>A sloped, unusable backyard became a tiered bluestone patio with a built-in fieldstone fire pit, custom cedar fence, and integrated planter beds. Built in 6 weeks.</p>
+          <div class="tags">
+            <span class="pill accent">Bluestone Patio</span>
+            <span class="pill moss">Fieldstone Walls</span>
+            <span class="pill">Fire Pit</span>
+            <span class="pill">Cedar Fence</span>
+          </div>
+          <a href="#portfolio" data-nav="portfolio" class="btn btn-ghost" style="align-self:flex-start; margin-top:6px;">See full portfolio <span class="arrow">→</span></a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section compact">
+    <div class="wrap">
+      <div class="testimonial fade-up">
+        <blockquote>
+          <span class="q">“</span>They didn’t just build me a retaining wall — they solved a drainage problem I’d been fighting for ten years. And it looks like art.<span class="q">”</span>
+        </blockquote>
+        <cite>— Karen D., Manchester-by-the-Sea</cite>
+      </div>
+    </div>
+  </section>
+
+  <section class="section compact">
+    <div class="wrap">
+      <div class="cta-band fade-up">
+        <div>
+          <h2>Let’s build something that lasts.</h2>
+          <p>Free on-site consult. Honest pricing. Built by hand by the crew you meet.</p>
+        </div>
+        <div class="actions">
+          <a href="#visit" data-nav="visit" class="btn btn-primary btn-large">Get a Free Quote <span class="arrow">→</span></a>
+          <a href="tel:+17816322285" class="btn btn-ghost btn-large">Call (781) 632-2285</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE: SERVICES
+════════════════════════════════════════════════════════════════ -->
+<section class="page" id="page-services" data-page="services">
+  <div class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow fade-up">Services</span>
+      <h1 class="fade-up delay-1">Stonework, hardscape, and fencing — done <em class="italic">by hand</em>.</h1>
+      <p class="lead fade-up delay-2">Tap any service to see what’s included, what we charge for, and a little lore from the trade.</p>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="svc-full">
+        <button class="svc-tile fade-up" onclick="openService('hardscape')">
+          <span class="num">01 / Design</span>
+          <h3>Hardscape Design</h3>
+          <p>Full-property layouts that balance grade, drainage, sightlines, and how you actually want to live outside.</p>
+          <div class="extras">
+            <span class="pill">Hand-drawn plans</span>
+            <span class="pill">3D renderings</span>
+            <span class="pill">Material samples</span>
+            <span class="pill">Plant integration</span>
+          </div>
+          <span class="open">See details →</span>
+        </button>
+        <button class="svc-tile fade-up delay-1" onclick="openService('retaining')">
+          <span class="num">02 / Stone</span>
+          <h3>Retaining Walls</h3>
+          <p>Engineered for the slope, dressed for the house. We handle drainage, geogrid, and permitting where needed.</p>
+          <div class="extras">
+            <span class="pill">Segmental block</span>
+            <span class="pill">Fieldstone</span>
+            <span class="pill">Cut granite</span>
+            <span class="pill">Engineered drainage</span>
+          </div>
+          <span class="open">See details →</span>
+        </button>
+        <button class="svc-tile fade-up delay-2" onclick="openService('patios')">
+          <span class="num">03 / Surface</span>
+          <h3>Patios &amp; Walkways</h3>
+          <p>Built on a 6–8" compacted gravel base with edge restraints and joint sand stabilizer. They don’t shift.</p>
+          <div class="extras">
+            <span class="pill">Bluestone</span>
+            <span class="pill">Brick</span>
+            <span class="pill">Pavers</span>
+            <span class="pill">Permeable</span>
+          </div>
+          <span class="open">See details →</span>
+        </button>
+        <button class="svc-tile fade-up delay-3" onclick="openService('stonewalls')">
+          <span class="num">04 / Heritage</span>
+          <h3>Stone Walls</h3>
+          <p>Dry-stacked or mortared. Field-found or quarried. The kind of work the next two generations will still admire.</p>
+          <div class="extras">
+            <span class="pill">Dry-stack</span>
+            <span class="pill">Mortared</span>
+            <span class="pill">New England fieldstone</span>
+            <span class="pill">Capstone work</span>
+          </div>
+          <span class="open">See details →</span>
+        </button>
+        <button class="svc-tile fade-up delay-4" onclick="openService('masonry')">
+          <span class="num">05 / Custom</span>
+          <h3>Custom Masonry</h3>
+          <p>Stairs, columns, pilasters, fire features, outdoor kitchens, repointed chimneys. If it’s stone or brick — we build it.</p>
+          <div class="extras">
+            <span class="pill">Steps &amp; stoops</span>
+            <span class="pill">Fire pits</span>
+            <span class="pill">Outdoor kitchens</span>
+            <span class="pill">Chimney repair</span>
+          </div>
+          <span class="open">See details →</span>
+        </button>
+        <button class="svc-tile fade-up delay-5" onclick="openService('fence')">
+          <span class="num">06 / Boundary</span>
+          <h3>Fence Installation</h3>
+          <p>Surveys read, posts set in concrete below frost line, lines run plumb. Built to ride out 20 winters.</p>
+          <div class="extras">
+            <span class="pill">Cedar</span>
+            <span class="pill">Vinyl</span>
+            <span class="pill">Aluminum / iron</span>
+            <span class="pill">Agricultural</span>
+            <span class="pill">Custom gates</span>
+          </div>
+          <span class="open">See details →</span>
+        </button>
+      </div>
+
+      <div class="section-head" style="margin-top: 90px;">
+        <div class="left">
+          <span class="eyebrow fade-up">Year-round property care</span>
+          <h2 class="fade-up delay-1">Keeping it sharp <em class="italic">between projects</em>.</h2>
+        </div>
+        <div class="right fade-up delay-2">Routine work that keeps your property dialed in season after season. Bundle it as a program or one-off.</div>
+      </div>
+
+      <div class="svc-full">
+        <button class="svc-tile fade-up" onclick="openService('cleanup')">
+          <span class="num">07 / Reset</span>
+          <h3>Spring &amp; Fall Cleanups</h3>
+          <p>Beds raked, debris hauled, edges re-cut, hardscape blown clean. The property reset for the season.</p>
+          <div class="extras">
+            <span class="pill">Bed cleanout</span>
+            <span class="pill">Perennial cutback</span>
+            <span class="pill">Edge re-cut</span>
+            <span class="pill">All debris hauled</span>
+          </div>
+          <span class="open">See details →</span>
+        </button>
+        <button class="svc-tile fade-up delay-1" onclick="openService('mowing')">
+          <span class="num">08 / Weekly</span>
+          <h3>Lawn Care &amp; Mowing</h3>
+          <p>Sharp blades, varied pattern, trimmed edges, hardscape blown clean — every visit.</p>
+          <div class="extras">
+            <span class="pill">Weekly</span>
+            <span class="pill">Biweekly</span>
+            <span class="pill">Trim &amp; edge</span>
+            <span class="pill">Bagging available</span>
+          </div>
+          <span class="open">See details →</span>
+        </button>
+        <button class="svc-tile fade-up delay-2" onclick="openService('edging')">
+          <span class="num">09 / Detail</span>
+          <h3>Bed Edging &amp; Definition</h3>
+          <p>Hand-cut V-trench edges around every bed, walkway, and tree. The detail that makes a yard look professional.</p>
+          <div class="extras">
+            <span class="pill">Bed lines</span>
+            <span class="pill">Walkway edges</span>
+            <span class="pill">Tree rings</span>
+          </div>
+          <span class="open">See details →</span>
+        </button>
+        <button class="svc-tile fade-up delay-3" onclick="openService('mulch')">
+          <span class="num">10 / Spring</span>
+          <h3>Black Mulch &amp; Bark</h3>
+          <p>2–3 inches of fresh mulch laid sharp at every edge. Black, brown, or natural.</p>
+          <div class="extras">
+            <span class="pill">Black-dyed</span>
+            <span class="pill">Dark brown</span>
+            <span class="pill">Hemlock / pine</span>
+            <span class="pill">Volume pricing</span>
+          </div>
+          <span class="open">See details →</span>
+        </button>
+        <button class="svc-tile fade-up delay-4" onclick="openService('leaves')">
+          <span class="num">11 / Fall</span>
+          <h3>Leaf Cleanup</h3>
+          <p>End-of-fall sweep to the curb or hauled away. Gutters too if you want.</p>
+          <div class="extras">
+            <span class="pill">Full property</span>
+            <span class="pill">Hauled away</span>
+            <span class="pill">Gutter add-on</span>
+          </div>
+          <span class="open">See details →</span>
+        </button>
+        <button class="svc-tile fade-up delay-5" onclick="openService('seasonal')">
+          <span class="num">12 / Program</span>
+          <h3>Seasonal Care Program</h3>
+          <p>One flat monthly invoice covering the full schedule. Locked pricing, priority scheduling.</p>
+          <div class="extras">
+            <span class="pill">Locked rate</span>
+            <span class="pill">Priority service</span>
+            <span class="pill">Cleanup + mowing + edging</span>
+            <span class="pill">Mulch refresh</span>
+          </div>
+          <span class="open">See details →</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section compact">
+    <div class="wrap">
+      <div class="cta-band fade-up">
+        <div>
+          <h2>Don’t see it on the list?</h2>
+          <p>If it involves stone, brick, block, or a property line — there’s a good chance we build it. Just ask.</p>
+        </div>
+        <div class="actions">
+          <a href="#visit" data-nav="visit" class="btn btn-primary btn-large">Tell us about your project <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE: PORTFOLIO
+════════════════════════════════════════════════════════════════ -->
+<section class="page" id="page-portfolio" data-page="portfolio">
+  <div class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow fade-up">Portfolio</span>
+      <h1 class="fade-up delay-1">Recent builds, season by season.</h1>
+      <p class="lead fade-up delay-2">A snapshot of work we’ve completed across the North Shore. Tap any project for the story behind it.</p>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="portfolio-filters fade-up">
+        <button class="filter-btn is-active" data-filter="all">All work</button>
+        <button class="filter-btn" data-filter="patio">Patios</button>
+        <button class="filter-btn" data-filter="wall">Walls</button>
+        <button class="filter-btn" data-filter="fence">Fences</button>
+        <button class="filter-btn" data-filter="custom">Custom</button>
+      </div>
+
+      <div class="portfolio-grid" id="portfolioGrid">
+        <!-- projects injected by JS -->
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE: ABOUT
+════════════════════════════════════════════════════════════════ -->
+<section class="page" id="page-about" data-page="about">
+  <div class="page-hero">
+    <div class="wrap">
+      <div class="about-grid">
+        <div>
+          <span class="eyebrow fade-up">Our story</span>
+          <h1 class="fade-up delay-1">Two friends. <span style="color:var(--accent)">One</span> trowel between them. <em class="italic" style="display:block;">A whole lot of stone.</em></h1>
+          <p class="fade-up delay-2" style="font-size:1.06rem;">Y<span style="color:var(--gold)">&amp;</span>C Landscaping &amp; Masonry started with a single retaining wall on a 90-degree Saturday — two friends, one trowel, and a stack of fieldstone too heavy for either of them alone. That wall is still standing. So is the partnership.</p>
+          <p class="fade-up delay-3">Today we’re a tight family-run crew based on Hamilton Street in Saugus, working across the North Shore. We swing the hammers ourselves. We believe good stonework is half engineering, half art — and 100% honest labor.</p>
+          <div class="fade-up delay-4" style="margin-top: 22px;">
+            <a href="#visit" data-nav="visit" class="btn btn-primary">Work with us <span class="arrow">→</span></a>
+          </div>
+        </div>
+        <div class="about-visual fade-up delay-2" aria-hidden="true">
+          <!-- About illustration: two hands placing a stone with mountains background -->
+          <svg viewBox="0 0 500 525" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="aboutBg" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%"  stop-color="#6E7F58"/>
+                <stop offset="100%" stop-color="#3A4628"/>
+              </linearGradient>
+            </defs>
+            <rect width="500" height="525" fill="url(#aboutBg)"/>
+            <!-- sun -->
+            <circle cx="380" cy="120" r="60" fill="#E8C994" opacity="0.85"/>
+            <!-- mountains -->
+            <path d="M0,300 L120,180 L220,260 L340,160 L500,280 L500,420 L0,420 Z" fill="#2E3A22"/>
+            <path d="M0,340 L100,260 L200,320 L320,240 L500,330 L500,420 L0,420 Z" fill="#1E2615"/>
+            <!-- big foreground stone -->
+            <ellipse cx="250" cy="430" rx="180" ry="60" fill="#1B1A17" opacity="0.4"/>
+            <path d="M120 380 Q120 340 170 320 Q250 280 340 310 Q400 330 390 390 Q380 430 320 430 L170 430 Q120 425 120 380 Z" fill="#C2B7A0"/>
+            <path d="M120 380 Q120 340 170 320 Q250 280 340 310 Q400 330 390 390 Q380 430 320 430 L170 430 Q120 425 120 380 Z" fill="url(#stoneTex)"/>
+            <!-- hands placing stone -->
+            <g fill="#D9A57E">
+              <!-- left hand -->
+              <path d="M80 360 Q60 380 70 410 L130 410 L120 350 Z"/>
+              <path d="M70 410 Q60 430 50 460 L100 470 L130 410 Z"/>
+              <!-- right hand -->
+              <path d="M420 360 Q440 380 430 410 L370 410 L380 350 Z"/>
+              <path d="M430 410 Q440 430 450 460 L400 470 L370 410 Z"/>
+            </g>
+            <!-- trowel -->
+            <g transform="translate(250, 240) rotate(-15)">
+              <rect x="-4" y="0" width="8" height="50" fill="#4A3826" rx="2"/>
+              <path d="M-22,50 L22,50 L18,72 L-18,72 Z" fill="#A89B7E"/>
+              <path d="M-22,50 L22,50 L18,72 L-18,72 Z" fill="url(#stoneTex)"/>
+            </g>
+            <!-- leaves -->
+            <g fill="#6E7F58">
+              <ellipse cx="60"  cy="490" rx="40" ry="14"/>
+              <ellipse cx="440" cy="490" rx="40" ry="14"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section compact">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat fade-up"><span class="num">2010</span><span class="lbl">Founded by Yuri &amp; Carlos</span></div>
+        <div class="stat fade-up delay-1"><span class="num">340+</span><span class="lbl">Projects completed</span></div>
+        <div class="stat fade-up delay-2"><span class="num">15</span><span class="lbl">North Shore towns served</span></div>
+        <div class="stat fade-up delay-3"><span class="num">100%</span><span class="lbl">Done by our crew</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="left">
+          <span class="eyebrow">What we believe</span>
+          <h2 style="margin-top:10px;">Three rules we don’t break.</h2>
+        </div>
+      </div>
+      <div class="values">
+        <div class="value fade-up">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <h4>If it’s worth building, it’s worth over-building.</h4>
+          <p>Deeper footings, stronger base, better drainage. You won’t see it — but you’ll feel it in 20 years.</p>
+        </div>
+        <div class="value fade-up delay-1">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+          <h4>Show up when we say we will.</h4>
+          <p>Same crew, on time, every day. If we get rained out, you’ll hear from us by 7am.</p>
+        </div>
+        <div class="value fade-up delay-2">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M12 3v18"/></svg></div>
+          <h4>The price you’re quoted is the price you pay.</h4>
+          <p>Real material allowances, real labor numbers, real contingency. No “change-order surprises.”</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section compact">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="left">
+          <span class="eyebrow">Meet the crew</span>
+          <h2 style="margin-top:10px;">The two names on the truck.</h2>
+        </div>
+      </div>
+      <div class="team">
+        <div class="team-card fade-up">
+          <div class="team-avatar">Y</div>
+          <div>
+            <h4>Yuri</h4>
+            <span class="role">Co-founder · Stonemason</span>
+            <p>Apprenticed under a third-generation Portuguese mason in Gloucester. Reads a stone the way a tailor reads cloth.</p>
+          </div>
+        </div>
+        <div class="team-card moss fade-up delay-1">
+          <div class="team-avatar">C</div>
+          <div>
+            <h4>Carlos</h4>
+            <span class="role">Co-founder · Hardscape Design</span>
+            <p>Trained as a draftsman before he ever picked up a trowel. Sketches every project by hand before a shovel hits dirt.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE: VISIT / CONTACT
+════════════════════════════════════════════════════════════════ -->
+<section class="page" id="page-visit" data-page="visit">
+  <div class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow fade-up">Free Quote</span>
+      <h1 class="fade-up delay-1">Let’s walk your <em class="italic">property</em>.</h1>
+      <p class="lead fade-up delay-2">Tell us about the project and we’ll come out, take a look, and give you a real number — no obligation, no pressure.</p>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div>
+          <div class="info-card fade-up">
+            <div class="hdr">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+              <h4>Call or text</h4>
+            </div>
+            <a class="big" href="tel:+17816322285">(781) 632-2285</a>
+            <p style="margin: 4px 0 0; color: var(--ink-mute); font-size: 0.92rem;">We pick up most days. Off the truck by 5pm.</p>
+          </div>
+
+          <div class="info-card fade-up delay-1">
+            <div class="hdr">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <h4>Service area</h4>
+            </div>
+            <span class="big">62 Hamilton St, Saugus, MA</span>
+            <p style="margin: 6px 0 14px; color: var(--ink-soft); font-size: 0.96rem;">Serving Saugus · Lynnfield · Peabody · Wakefield · Melrose · Malden · Stoneham · Reading · Lynn · Swampscott · Danvers · Beverly · Salem · Revere · the greater North Shore</p>
+            <a class="btn btn-ghost" href="https://maps.google.com/?q=62+Hamilton+St+Saugus+MA" target="_blank" rel="noopener">Open in Maps <span class="arrow">→</span></a>
+          </div>
+
+          <div class="info-card fade-up delay-2">
+            <div class="hdr">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+              <h4>Hours</h4>
+            </div>
+            <table class="hours" id="hoursTable">
+              <tr data-day="Mon"><td>Monday</td>    <td>7:00 AM – 5:00 PM</td></tr>
+              <tr data-day="Tue"><td>Tuesday</td>   <td>7:00 AM – 5:00 PM</td></tr>
+              <tr data-day="Wed"><td>Wednesday</td> <td>7:00 AM – 5:00 PM</td></tr>
+              <tr data-day="Thu"><td>Thursday</td>  <td>7:00 AM – 5:00 PM</td></tr>
+              <tr data-day="Fri"><td>Friday</td>    <td>7:00 AM – 5:00 PM</td></tr>
+              <tr data-day="Sat"><td>Saturday</td>  <td>By appointment</td></tr>
+              <tr data-day="Sun"><td>Sunday</td>    <td>Closed</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="form-card fade-up delay-1">
+          <h3>Tell us about the build</h3>
+          <p class="sub">We’ll be in touch within one business day to set up a walk-through.</p>
+          <form class="contact-form" id="quoteForm" novalidate>
+            <div class="field-row">
+              <div class="field">
+                <label for="f-name">Name</label>
+                <input id="f-name" name="name" type="text" required autocomplete="name" />
+              </div>
+              <div class="field">
+                <label for="f-phone">Phone</label>
+                <input id="f-phone" name="phone" type="tel" required autocomplete="tel" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-email">Email</label>
+              <input id="f-email" name="email" type="email" required autocomplete="email" />
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="f-town">Town</label>
+                <input id="f-town" name="town" type="text" placeholder="e.g. Beverly" />
+              </div>
+              <div class="field">
+                <label for="f-svc">Project type</label>
+                <select id="f-svc" name="service">
+                  <option value="">Select…</option>
+                  <optgroup label="Build">
+                    <option>Hardscape design</option>
+                    <option>Retaining wall</option>
+                    <option>Patio</option>
+                    <option>Walkway</option>
+                    <option>Stone wall</option>
+                    <option>Custom masonry</option>
+                    <option>Fence installation</option>
+                  </optgroup>
+                  <optgroup label="Property care">
+                    <option>Spring / fall cleanup</option>
+                    <option>Lawn care &amp; mowing</option>
+                    <option>Bed edging</option>
+                    <option>Mulch / bark</option>
+                    <option>Leaf cleanup</option>
+                    <option>Seasonal program</option>
+                  </optgroup>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-msg">Tell us about it</label>
+              <textarea id="f-msg" name="message" placeholder="Sloped backyard, need a retaining wall and a patio above it…"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-large" style="margin-top: 6px; align-self: flex-start;">Request a Quote <span class="arrow">→</span></button>
+            <div class="form-success" id="formSuccess">Thanks — we’ll be in touch within one business day. Talk soon.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+</main>
+
+<!-- ──────────── FOOTER ──────────── -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#home" class="brand" data-nav="home">
+          <span class="brand-mark">Y&amp;C</span>
+          <span>Y<span class="amp">&amp;</span>C <span class="brand-sub">Landscaping &amp; Masonry</span></span>
+        </a>
+        <p>Hardscape design, masonry, fence installation, and year-round property care. Family-run out of Saugus, MA.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Visit</h5>
+        <ul>
+          <li><a href="#home" data-nav="home">Home</a></li>
+          <li><a href="#services" data-nav="services">Services</a></li>
+          <li><a href="#portfolio" data-nav="portfolio">Portfolio</a></li>
+          <li><a href="#about" data-nav="about">About</a></li>
+          <li><a href="#visit" data-nav="visit">Contact</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>What we do</h5>
+        <ul>
+          <li><a href="#services" data-nav="services">Hardscape &amp; design</a></li>
+          <li><a href="#services" data-nav="services">Retaining walls</a></li>
+          <li><a href="#services" data-nav="services">Patios &amp; walkways</a></li>
+          <li><a href="#services" data-nav="services">Stone walls &amp; masonry</a></li>
+          <li><a href="#services" data-nav="services">Fence installation</a></li>
+          <li><a href="#services" data-nav="services">Property care &amp; mulch</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Get in touch</h5>
+        <ul>
+          <li><a href="tel:+17816322285">(781) 632-2285</a></li>
+          <li>62 Hamilton St</li>
+          <li>Saugus, MA</li>
+          <li>Mon–Fri · 7am – 5pm</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <div>© <span id="year"></span> Y&amp;C Landscaping &amp; Masonry · Built by hand, like the walls.</div>
+      <div>Licensed &amp; insured · Saugus, MA</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ──────────── SERVICE MODAL ──────────── -->
+<div class="modal-overlay" id="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <div class="modal-art" id="modalArt"></div>
+    <button class="modal-close" id="modalClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-body">
+      <span class="num" id="modalNum"></span>
+      <h3 id="modalTitle"></h3>
+      <span class="price" id="modalPrice"></span>
+      <p class="desc" id="modalDesc"></p>
+      <div class="extras-label">Included &amp; options</div>
+      <div class="extras" id="modalExtras"></div>
+      <div class="fun-label">Stoneworker’s lore</div>
+      <div class="fun" id="modalFun"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ────────────────────────── DATA: SERVICES ────────────────────────── */
+const services = {
+  hardscape: {
+    num: "01 / Design",
+    title: "Hardscape Design",
+    price: "Design package: starts at $850 · waived on builds over $15k",
+    desc: "Before any stone gets moved we walk the property, take measurements, and sketch a full hardscape plan — grade, drainage, sightlines, materials, and how each piece talks to the house. You get hand-drawn plans, a 3D walkthrough, and physical material samples to live with for a week.",
+    extras: ["Hand-drawn plans", "3D renderings", "Material samples", "Plant integration", "Drainage analysis", "Permit-ready drawings"],
+    fun: "The word <b>hardscape</b> first appeared in print in landscape design textbooks in the late 1970s, distinguishing built elements — patios, walls, paths — from softscape (plants). The two terms now define the trade.",
+    art: "design"
+  },
+  retaining: {
+    num: "02 / Stone",
+    title: "Retaining Walls",
+    price: "From ~$95 / face-foot · engineered systems quoted separately",
+    desc: "Whether you need to tame a backyard slope or carve a tier into a hillside, we build retaining walls that handle the load and look right with the house. Segmental block for clean lines, fieldstone for old-New-England character, or formal cut stone for grand entries.",
+    extras: ["Segmental block", "Mortared fieldstone", "Dry-stack fieldstone", "Cut granite", "Engineered drainage", "Geogrid reinforcement", "Walls over 4ft (engineered)"],
+    fun: "Stone retaining walls have been holding back hillsides for at least <b>3,500 years</b> — the terraced agricultural walls of Machu Picchu still stand today, built without mortar and engineered to drain rainwater away from the slope, exactly the way we still do it.",
+    art: "wall"
+  },
+  patios: {
+    num: "03 / Surface",
+    title: "Patios & Walkways",
+    price: "From ~$28 / sq ft for pavers · ~$42 / sq ft for natural stone",
+    desc: "A patio is only as good as what’s under it. We dig down 8–10 inches, compact in 2-inch lifts, run a woven geotextile, and set the surface on a dry-bedded base with polymeric joint sand. They don’t shift, they don’t weed, they don’t move.",
+    extras: ["Bluestone", "Brick", "Concrete pavers", "Natural fieldstone", "Permeable systems", "Mortared on slab"],
+    fun: "The bluestone we love in New England is technically a <b>fine-grained feldspathic sandstone</b>, formed roughly 380 million years ago in a freshwater delta — meaning every bluestone patio you walk on is built from a riverbed older than dinosaurs.",
+    art: "patio"
+  },
+  stonewalls: {
+    num: "04 / Heritage",
+    title: "Stone Walls",
+    price: "From ~$85 / face-foot dry-stack · ~$120 / face-foot mortared",
+    desc: "The classic New England stone wall — built the slow way. Each stone hand-picked, dry-stacked or set in mortar, capped to shed water. We work in fieldstone, granite, or whatever’s already on your property if that’s the look you want.",
+    extras: ["Dry-stack fieldstone", "Mortared stone", "Capstone work", "Repair of old walls", "Granite", "Property-sourced stone"],
+    fun: "New England has roughly <b>240,000 miles</b> of dry-stacked stone walls — enough, end to end, to wrap around the Earth almost ten times. Most were built between 1775 and 1850 as farmers cleared rocky fields. We’re still building in that tradition.",
+    art: "wall"
+  },
+  masonry: {
+    num: "05 / Custom",
+    title: "Custom Masonry",
+    price: "Quoted per project · most range $3k – $25k+",
+    desc: "The custom work that makes a house feel finished. Stone steps and stoops, brick columns, fire pits and fireplaces, outdoor kitchen footprints, chimney repointing, repairs to old work, restoration of historic stone. Send us a photo of what you’re imagining.",
+    extras: ["Steps &amp; stoops", "Pillars / pilasters", "Fire pits", "Outdoor fireplaces", "Outdoor kitchens", "Chimney work", "Stone restoration"],
+    fun: "The oldest known mortar — a lime-based binder used to set stones — was found at a <b>12,000-year-old site in Turkey</b>. The chemistry has barely changed: lime, sand, and water, just like the masons used at Göbekli Tepe.",
+    art: "custom"
+  },
+  fence: {
+    num: "06 / Boundary",
+    title: "Fence Installation",
+    price: "From ~$45 / linear ft cedar · ~$55 / linear ft vinyl · gates quoted custom",
+    desc: "Property surveys read carefully, posts dug below frost line and set in concrete, lines pulled plumb to the inch. Cedar for warmth, vinyl for zero-maintenance, ornamental aluminum or steel for clean modern lines, agricultural for big lots. Custom gates and hardware to match.",
+    extras: ["Cedar (board-on-board, picket, privacy)", "Vinyl", "Aluminum / wrought iron", "Agricultural / split-rail", "Custom gates", "Hardware upgrades", "Survey staking"],
+    fun: "Robert Frost’s line <em>“good fences make good neighbors”</em> isn’t actually Frost’s opinion in the poem — the speaker disagrees with his wall-loving neighbor. But the saying stuck, and the fencing trade has been quoting it ever since.",
+    art: "fence"
+  },
+  cleanup: {
+    num: "Care · Seasonal",
+    title: "Spring &amp; Fall Cleanups",
+    price: "From $475 front &amp; back · bigger lots quoted on-site",
+    desc: "We reset the property for the season. Rake out beds and lawn, cut back perennials, pull winter weeds, edge garden lines crisp, blow down hardscape, and haul off every bit of debris. By the time we leave, the place looks like new.",
+    extras: ["Bed cleanout", "Perennial cutback", "Edge re-cut", "Hardscape blow-down", "All debris hauled away"],
+    fun: "The old New England farming calendar called the first warm week of April <b>“mud week.”</b> It was when the frozen ground finally let go — and the only week of the year you could pull dead growth without breaking roots. Spring cleanup is basically that same rhythm, 200 years later.",
+    art: "design"
+  },
+  mowing: {
+    num: "Care · Weekly",
+    title: "Lawn Care &amp; Mowing",
+    price: "From $55 / visit residential · weekly or biweekly schedules",
+    desc: "Sharp blades, varied mow pattern to prevent rut lines, all edges trimmed, hardscape and driveway blown clean. We rotate cutting direction every visit so your lawn stays even and your turf stays healthy.",
+    extras: ["Weekly mow", "Biweekly mow", "Trim &amp; edge", "Driveway blow-down", "Clippings bagged on request"],
+    fun: "A typical residential lawn produces about <b>2,500 lbs of clippings a year</b>. Most should stay on the lawn — mulched, they return up to 30% of your nitrogen for free. We mulch by default and only bag on request.",
+    art: "design"
+  },
+  edging: {
+    num: "Care · Detail",
+    title: "Bed Edging &amp; Definition",
+    price: "From ~$1.25 / linear ft · usually bundled with cleanup or mulch",
+    desc: "The single thing that separates a “done” yard from a “mowed” one. We cut a clean V-trench at every bed line, walkway edge, and tree ring — about 3 inches deep, 4 inches wide, beveled toward the bed so it sheds water and shows a sharp shadow line.",
+    extras: ["Garden bed edging", "Walkway edging", "Tree ring edging", "Re-cut existing edges", "Spade or machine cut"],
+    fun: "British formal gardens have used the “half-moon edging spade” since the <b>1700s</b> — a curved blade made specifically to cut crisp bed lines. We still use the same shape today. Some tools peak early.",
+    art: "design"
+  },
+  mulch: {
+    num: "Care · Spring",
+    title: "Black Mulch &amp; Bark",
+    price: "From $85 / yard installed · most yards take 6 – 15 yards",
+    desc: "We rake out the old, define the edges, and lay 2 – 3 inches of fresh mulch around every bed and tree. Black for sharpest contrast, dark brown for warmer tone, natural hemlock or pine if you want a softer look. Suppresses weeds, holds moisture, makes everything pop.",
+    extras: ["Black-dyed", "Dark brown", "Hemlock / pine bark", "Around trees &amp; beds", "Volume discount on larger jobs"],
+    fun: "Mulch isn’t just decoration — it can cut weed germination by <b>up to 90%</b> by blocking the sunlight weed seeds need to sprout. That’s why a fresh layer every spring saves you hours of pulling all summer.",
+    art: "design"
+  },
+  leaves: {
+    num: "Care · Fall",
+    title: "Leaf Cleanup",
+    price: "From $375 typical residential · large or wooded lots quoted on-site",
+    desc: "End-of-fall sweep. We blow leaves from beds, lawn, hardscape, and tight corners to the curb or onto tarps — your choice. Hauled off-site, no piles left behind. Add gutter cleanout for a flat extra.",
+    extras: ["Full property blow-down", "Bagged or hauled", "Gutter cleanout add-on", "Late-season callbacks", "One-time or recurring"],
+    fun: "A mature oak drops around <b>700,000 leaves</b> per season. Left on a lawn, that mat blocks sunlight and smothers turf by mid-November — which is why we time the last cleanup right after the oaks finally let go.",
+    art: "design"
+  },
+  seasonal: {
+    num: "Care · Program",
+    title: "Seasonal Care Program",
+    price: "Custom monthly rate · most residential programs $250 – $600 / mo",
+    desc: "One flat monthly invoice covers the full schedule: spring &amp; fall cleanup, every mow, edge, mulch refresh, and reasonable in-season touch-ups. Locked-in pricing, priority scheduling, and one less thing to remember.",
+    extras: ["Locked seasonal pricing", "Priority scheduling", "Cleanup + mowing + edging", "Mulch refresh included", "First-call for storm/snow add-ons"],
+    fun: "Most landscape pros agree the “1% rule” works: spend roughly 1% of your home’s value per year on outside care and the property holds — or improves — its curb value. A $700k home, $7k a year. Programs make that math easier.",
+    art: "design"
+  }
+};
+
+/* SVG art for each modal */
+const modalArt = {
+  design: `<svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="dBg" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#6E7F58"/><stop offset="100%" stop-color="#4A5A36"/></linearGradient></defs><rect width="600" height="300" fill="url(#dBg)"/><g stroke="#FBF7EE" stroke-width="1.5" fill="none" opacity="0.5"><line x1="0" y1="60"  x2="600" y2="60"/><line x1="0" y1="120" x2="600" y2="120"/><line x1="0" y1="180" x2="600" y2="180"/><line x1="0" y1="240" x2="600" y2="240"/><line x1="100" y1="0" x2="100" y2="300"/><line x1="200" y1="0" x2="200" y2="300"/><line x1="300" y1="0" x2="300" y2="300"/><line x1="400" y1="0" x2="400" y2="300"/><line x1="500" y1="0" x2="500" y2="300"/></g><path d="M40 220 Q200 80 380 160 T560 100" stroke="#D87446" stroke-width="3" fill="none"/><circle cx="40"  cy="220" r="6" fill="#D87446"/><circle cx="380" cy="160" r="6" fill="#D87446"/><circle cx="560" cy="100" r="6" fill="#D87446"/></svg>`,
+  wall: `<svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="wG" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#B8AC92"/><stop offset="100%" stop-color="#7A6F58"/></linearGradient></defs><rect width="600" height="300" fill="#9A8E72"/><g><rect x="0"   y="60"  width="100" height="50" rx="4" fill="url(#wG)" stroke="rgba(0,0,0,0.3)"/><rect x="100" y="60"  width="140" height="50" rx="5" fill="#A89B7E" stroke="rgba(0,0,0,0.3)"/><rect x="240" y="60"  width="110" height="50" rx="4" fill="url(#wG)" stroke="rgba(0,0,0,0.3)"/><rect x="350" y="60"  width="120" height="50" rx="5" fill="#B8AC92" stroke="rgba(0,0,0,0.3)"/><rect x="470" y="60"  width="130" height="50" rx="4" fill="url(#wG)" stroke="rgba(0,0,0,0.3)"/><rect x="0"   y="110" width="130" height="50" rx="5" fill="#A89B7E" stroke="rgba(0,0,0,0.3)"/><rect x="130" y="110" width="100" height="50" rx="4" fill="url(#wG)" stroke="rgba(0,0,0,0.3)"/><rect x="230" y="110" width="140" height="50" rx="5" fill="#B8AC92" stroke="rgba(0,0,0,0.3)"/><rect x="370" y="110" width="120" height="50" rx="4" fill="url(#wG)" stroke="rgba(0,0,0,0.3)"/><rect x="490" y="110" width="110" height="50" rx="5" fill="#A89B7E" stroke="rgba(0,0,0,0.3)"/><rect x="0"   y="160" width="110" height="50" rx="4" fill="url(#wG)" stroke="rgba(0,0,0,0.3)"/><rect x="110" y="160" width="130" height="50" rx="5" fill="#B8AC92" stroke="rgba(0,0,0,0.3)"/><rect x="240" y="160" width="110" height="50" rx="4" fill="#A89B7E" stroke="rgba(0,0,0,0.3)"/><rect x="350" y="160" width="130" height="50" rx="5" fill="url(#wG)" stroke="rgba(0,0,0,0.3)"/><rect x="480" y="160" width="120" height="50" rx="4" fill="#B8AC92" stroke="rgba(0,0,0,0.3)"/><rect x="0" y="210" width="600" height="90" fill="#4A5A36"/><ellipse cx="80" cy="220" rx="40" ry="14" fill="#6E7F58"/><ellipse cx="280" cy="218" rx="50" ry="16" fill="#6E7F58"/><ellipse cx="480" cy="220" rx="42" ry="14" fill="#6E7F58"/></g></svg>`,
+  patio: `<svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="pSky" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#E8C994"/><stop offset="100%" stop-color="#C49350"/></linearGradient><linearGradient id="pStn" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#C2B7A0"/><stop offset="100%" stop-color="#8E826A"/></linearGradient></defs><rect width="600" height="300" fill="url(#pSky)"/><ellipse cx="120" cy="160" rx="80" ry="40" fill="#4A5A36" opacity="0.85"/><ellipse cx="450" cy="150" rx="130" ry="50" fill="#3A4628"/><polygon points="60,300 540,300 580,180 20,180" fill="url(#pStn)"/><g stroke="rgba(0,0,0,0.18)" stroke-width="1" fill="none"><line x1="20" y1="230" x2="580" y2="230"/><line x1="20" y1="265" x2="580" y2="265"/><line x1="180" y1="180" x2="160" y2="300"/><line x1="300" y1="180" x2="300" y2="300"/><line x1="420" y1="180" x2="440" y2="300"/></g><rect x="20" y="160" width="560" height="20" fill="#857A5F"/><ellipse cx="100" cy="260" rx="50" ry="14" fill="#1B1A17" opacity="0.3"/><ellipse cx="500" cy="260" rx="50" ry="14" fill="#1B1A17" opacity="0.3"/></svg>`,
+  custom: `<svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="cBg" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#8C3617"/><stop offset="100%" stop-color="#4A1E0A"/></linearGradient></defs><rect width="600" height="300" fill="url(#cBg)"/><ellipse cx="300" cy="240" rx="160" ry="36" fill="#1B1A17"/><ellipse cx="300" cy="220" rx="160" ry="32" fill="#857A5F"/><g><path d="M250 210 Q260 170 280 195 Q295 150 305 190 Q318 155 325 195 Q340 170 350 210 L250 210 Z" fill="#D87446"/><path d="M270 205 Q280 175 290 195 Q300 165 310 195 Q320 175 330 205 L270 205 Z" fill="#E8C994" opacity="0.9"/><path d="M285 200 Q295 180 305 195 Q310 180 315 200 L285 200 Z" fill="#FBF7EE" opacity="0.85"/></g><rect x="80" y="200" width="40" height="80" fill="#8E826A"/><rect x="480" y="200" width="40" height="80" fill="#8E826A"/><ellipse cx="100" cy="195" rx="30" ry="10" fill="#4A5A36"/><ellipse cx="500" cy="195" rx="30" ry="10" fill="#4A5A36"/></svg>`,
+  fence: `<svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="fSky" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#E0CDA4"/><stop offset="100%" stop-color="#9A8E72"/></linearGradient></defs><rect width="600" height="300" fill="url(#fSky)"/><rect x="0" y="220" width="600" height="80" fill="#6E7F58"/><g fill="#A56B3A" stroke="#5A3818" stroke-width="1.5"><polygon points="40,90 60,70 80,90 80,260 40,260"/><polygon points="120,90 140,70 160,90 160,260 120,260"/><polygon points="200,90 220,70 240,90 240,260 200,260"/><polygon points="280,90 300,70 320,90 320,260 280,260"/><polygon points="360,90 380,70 400,90 400,260 360,260"/><polygon points="440,90 460,70 480,90 480,260 440,260"/><polygon points="520,90 540,70 560,90 560,260 520,260"/></g><rect x="0" y="130" width="600" height="14" fill="#5A3818"/><rect x="0" y="200" width="600" height="14" fill="#5A3818"/><ellipse cx="100" cy="220" rx="44" ry="14" fill="#4A5A36"/><ellipse cx="500" cy="220" rx="44" ry="14" fill="#4A5A36"/></svg>`
+};
+
+/* ────────────────────────── DATA: PORTFOLIO ────────────────────────── */
+const projects = [
+  { id: "marshfield",  cat: "patio",  size: "lg",  meta: "Beverly · 2025",        title: "The Marshfield Project",   blurb: "Tiered bluestone patio, fieldstone fire pit, cedar privacy fence." },
+  { id: "salemwall",   cat: "wall",   size: "med", meta: "Salem · 2024",          title: "Witch House Wall Restore",  blurb: "Restoration of a 200-year-old dry-stack fieldstone wall." },
+  { id: "gloucwalk",   cat: "patio",  size: "med", meta: "Gloucester · 2024",     title: "Granite Walkway",           blurb: "Custom-cut granite stepping stones through a coastal garden." },
+  { id: "ipswichfen",  cat: "fence",  size: "sm",  meta: "Ipswich · 2025",        title: "Cedar Board-on-Board",      blurb: "180 linear feet of full-privacy cedar with a matching arched gate." },
+  { id: "manchpit",    cat: "custom", size: "sm",  meta: "Manchester · 2024",     title: "Stone Fire Pit",            blurb: "Hand-laid fieldstone fire pit with built-in seating wall." },
+  { id: "topspatio",   cat: "patio",  size: "sm",  meta: "Topsfield · 2024",      title: "Permeable Paver Patio",     blurb: "1,400 sq ft permeable paver patio over engineered drainage base." },
+  { id: "danvretain",  cat: "wall",   size: "med", meta: "Danvers · 2023",        title: "Tiered Retaining Walls",    blurb: "Three-tier segmental block retaining system solving a 9-ft grade drop." },
+  { id: "hamiltgate",  cat: "fence",  size: "med", meta: "Hamilton · 2025",       title: "Ag-Style Paddock Fencing",  blurb: "1,200 ft of agricultural fencing on a 12-acre horse property." },
+  { id: "salemkitch",  cat: "custom", size: "lg",  meta: "Salem · 2025",          title: "Outdoor Kitchen Build",     blurb: "Full outdoor kitchen with stone counters, pizza oven, and integrated grill." }
+];
+
+const projectArt = {
+  patio: `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="pa1" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#E0CDA4"/><stop offset="100%" stop-color="#9A8E72"/></linearGradient></defs><rect width="600" height="450" fill="url(#pa1)"/><ellipse cx="150" cy="240" rx="100" ry="40" fill="#4A5A36" opacity="0.85"/><ellipse cx="450" cy="220" rx="140" ry="55" fill="#3A4628"/><polygon points="100,450 500,450 540,290 60,290" fill="#C2B7A0"/><g stroke="rgba(0,0,0,0.18)" fill="none"><line x1="60" y1="340" x2="540" y2="340"/><line x1="80" y1="395" x2="520" y2="395"/><line x1="180" y1="290" x2="160" y2="450"/><line x1="300" y1="290" x2="300" y2="450"/><line x1="420" y1="290" x2="440" y2="450"/></g></svg>`,
+  wall:  `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="wa1" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#E0CDA4"/><stop offset="100%" stop-color="#9A8E72"/></linearGradient></defs><rect width="600" height="450" fill="url(#wa1)"/><ellipse cx="500" cy="180" rx="120" ry="40" fill="#4A5A36" opacity="0.8"/><g><rect x="0" y="200" width="600" height="60" fill="#B8AC92"/><rect x="0" y="200" width="120" height="60" fill="#A89B7E" stroke="rgba(0,0,0,0.3)"/><rect x="120" y="200" width="100" height="60" fill="#B8AC92" stroke="rgba(0,0,0,0.3)"/><rect x="220" y="200" width="140" height="60" fill="#9A8E72" stroke="rgba(0,0,0,0.3)"/><rect x="360" y="200" width="110" height="60" fill="#A89B7E" stroke="rgba(0,0,0,0.3)"/><rect x="470" y="200" width="130" height="60" fill="#B8AC92" stroke="rgba(0,0,0,0.3)"/><rect x="0" y="260" width="140" height="60" fill="#B8AC92" stroke="rgba(0,0,0,0.3)"/><rect x="140" y="260" width="100" height="60" fill="#A89B7E" stroke="rgba(0,0,0,0.3)"/><rect x="240" y="260" width="130" height="60" fill="#9A8E72" stroke="rgba(0,0,0,0.3)"/><rect x="370" y="260" width="120" height="60" fill="#B8AC92" stroke="rgba(0,0,0,0.3)"/><rect x="490" y="260" width="110" height="60" fill="#A89B7E" stroke="rgba(0,0,0,0.3)"/><rect x="0" y="320" width="600" height="130" fill="#4A5A36"/></g></svg>`,
+  fence: `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="fa1" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#E0CDA4"/><stop offset="100%" stop-color="#9A8E72"/></linearGradient></defs><rect width="600" height="450" fill="url(#fa1)"/><rect x="0" y="330" width="600" height="120" fill="#6E7F58"/><g fill="#A56B3A" stroke="#5A3818" stroke-width="1.5"><polygon points="40,150 60,130 80,150 80,400 40,400"/><polygon points="140,150 160,130 180,150 180,400 140,400"/><polygon points="240,150 260,130 280,150 280,400 240,400"/><polygon points="340,150 360,130 380,150 380,400 340,400"/><polygon points="440,150 460,130 480,150 480,400 440,400"/><polygon points="540,150 560,130 580,150 580,400 540,400"/></g><rect x="0" y="200" width="600" height="14" fill="#5A3818"/><rect x="0" y="310" width="600" height="14" fill="#5A3818"/></svg>`,
+  custom:`<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="ca1" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#8C3617"/><stop offset="100%" stop-color="#4A1E0A"/></linearGradient></defs><rect width="600" height="450" fill="url(#ca1)"/><ellipse cx="300" cy="360" rx="220" ry="50" fill="#1B1A17"/><ellipse cx="300" cy="330" rx="220" ry="44" fill="#857A5F"/><g><path d="M220 320 Q240 250 280 300 Q300 220 320 295 Q345 240 365 305 Q390 260 410 325 L220 325 Z" fill="#D87446"/><path d="M250 315 Q270 270 290 305 Q310 260 330 305 Q350 270 370 320 L250 320 Z" fill="#E8C994"/><path d="M280 310 Q295 280 310 300 Q325 280 335 315 L280 315 Z" fill="#FBF7EE"/></g><rect x="60" y="280" width="60" height="120" fill="#8E826A"/><rect x="480" y="280" width="60" height="120" fill="#8E826A"/><ellipse cx="90" cy="275" rx="40" ry="14" fill="#4A5A36"/><ellipse cx="510" cy="275" rx="40" ry="14" fill="#4A5A36"/></svg>`
+};
+
+/* ────────────────────────── RENDER PORTFOLIO ────────────────────────── */
+function renderPortfolio(filter) {
+  const grid = document.getElementById("portfolioGrid");
+  if (!grid) return;
+  const list = filter === "all" ? projects : projects.filter(p => p.cat === filter);
+  grid.innerHTML = list.map(p => `
+    <article class="proj ${p.size}" data-cat="${p.cat}">
+      <div class="proj-art">${projectArt[p.cat]}</div>
+      <div class="proj-body">
+        <div class="meta">${p.meta}</div>
+        <h4>${p.title}</h4>
+        <p>${p.blurb}</p>
+      </div>
+    </article>
+  `).join("");
+  // re-arm reveal observer on new elements
+  document.querySelectorAll("#portfolioGrid .proj").forEach(el => el.classList.add("fade-up", "is-revealed"));
+}
+
+/* ────────────────────────── SPA ROUTER ────────────────────────── */
+function go(pageId, opts = {}) {
+  const target = document.getElementById("page-" + pageId);
+  if (!target) return;
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("is-active"));
+  target.classList.add("is-active");
+  document.documentElement.setAttribute("data-page", pageId);
+  document.querySelectorAll("[data-nav]").forEach(a => {
+    a.classList.toggle("is-active", a.getAttribute("data-nav") === pageId);
+  });
+  if (!opts.skipHash) {
+    if (history.pushState) history.pushState({ page: pageId }, "", "#" + pageId);
+    else location.hash = pageId;
+  }
+  window.scrollTo({ top: 0, behavior: opts.instant ? "instant" : "smooth" });
+  // close mobile menu
+  document.body.classList.remove("menu-open");
+  document.getElementById("mobileMenu").setAttribute("aria-hidden", "true");
+  // reveal animations on the new page
+  requestAnimationFrame(() => {
+    target.querySelectorAll(".fade-up").forEach(el => el.classList.add("is-revealed"));
+  });
+}
+
+document.addEventListener("click", e => {
+  const link = e.target.closest("[data-nav]");
+  if (!link) return;
+  e.preventDefault();
+  go(link.getAttribute("data-nav"));
+});
+
+window.addEventListener("popstate", () => {
+  const id = (location.hash || "#home").slice(1);
+  go(id, { skipHash: true, instant: true });
+});
+
+/* ────────────────────────── THEME TOGGLE ────────────────────────── */
+const root = document.documentElement;
+const savedTheme = localStorage.getItem("yc-theme");
+if (savedTheme) root.setAttribute("data-theme", savedTheme);
+document.getElementById("themeToggle").addEventListener("click", () => {
+  const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  root.setAttribute("data-theme", next);
+  localStorage.setItem("yc-theme", next);
+});
+
+/* ────────────────────────── MOBILE MENU ────────────────────────── */
+const hamburger = document.getElementById("hamburgerBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+if (hamburger) {
+  hamburger.addEventListener("click", () => {
+    const open = document.body.classList.toggle("menu-open");
+    mobileMenu.setAttribute("aria-hidden", open ? "false" : "true");
+  });
+}
+
+/* ────────────────────────── MODAL ────────────────────────── */
+const modal       = document.getElementById("modal");
+const modalArtEl  = document.getElementById("modalArt");
+const modalNumEl  = document.getElementById("modalNum");
+const modalTitleE = document.getElementById("modalTitle");
+const modalPriceE = document.getElementById("modalPrice");
+const modalDescE  = document.getElementById("modalDesc");
+const modalExtras = document.getElementById("modalExtras");
+const modalFunE   = document.getElementById("modalFun");
+
+function openService(id) {
+  const svc = services[id];
+  if (!svc) return;
+  modalNumEl.textContent  = svc.num;
+  modalTitleE.textContent = svc.title;
+  modalPriceE.textContent = svc.price;
+  modalDescE.textContent  = svc.desc;
+  modalExtras.innerHTML   = svc.extras.map(x => `<span class="pill">${x}</span>`).join("");
+  modalFunE.innerHTML     = svc.fun;
+  modalArtEl.innerHTML    = modalArt[svc.art] || "";
+  modal.classList.add("is-open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
+function closeModal() {
+  modal.classList.remove("is-open");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+document.getElementById("modalClose").addEventListener("click", closeModal);
+modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
+
+/* ────────────────────────── PORTFOLIO FILTERS ────────────────────────── */
+document.querySelectorAll(".filter-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("is-active"));
+    btn.classList.add("is-active");
+    renderPortfolio(btn.getAttribute("data-filter"));
+  });
+});
+
+/* ────────────────────────── HOURS: HIGHLIGHT TODAY ────────────────────────── */
+(function highlightToday() {
+  const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  const today = days[new Date().getDay()];
+  document.querySelectorAll("#hoursTable tr").forEach(tr => {
+    if (tr.getAttribute("data-day") === today) tr.classList.add("today");
+  });
+})();
+
+/* ────────────────────────── FORM ────────────────────────── */
+const form = document.getElementById("quoteForm");
+const success = document.getElementById("formSuccess");
+if (form) {
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    success.classList.add("is-shown");
+    form.reset();
+    setTimeout(() => success.classList.remove("is-shown"), 6000);
+  });
+}
+
+/* ────────────────────────── FADE-UP REVEAL ────────────────────────── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("is-revealed"); io.unobserve(en.target); } });
+}, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+document.querySelectorAll(".fade-up").forEach(el => io.observe(el));
+
+/* ────────────────────────── INIT ────────────────────────── */
+renderPortfolio("all");
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* boot to current hash if present */
+const initial = (location.hash || "#home").slice(1);
+if (initial !== "home") go(initial, { skipHash: true, instant: true });
+</script>
+</body>
+</html>
