@@ -300,8 +300,8 @@ em.italic { font-family: var(--display); font-style: italic; font-weight: 400; c
 .btn:hover .arrow { transform: translateX(3px); }
 
 /* ────────────────────────── PAGES (SPA) ────────────────────────── */
-.page { display: none; animation: pageIn 0.45s ease both; }
-.page.is-active { display: block; }
+.page { display: none !important; animation: pageIn 0.45s ease both; }
+.page.is-active { display: block !important; }
 @keyframes pageIn {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -2132,7 +2132,7 @@ a.mini-card:hover { border-color: var(--accent); transform: translateY(-2px); }
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
   <section class="section compact">
     <div class="wrap">
@@ -2504,7 +2504,8 @@ function go(pageId, opts = {}) {
     if (history.pushState) history.pushState({ page: pageId }, "", "#" + pageId);
     else location.hash = pageId;
   }
-  window.scrollTo({ top: 0, behavior: opts.instant ? "instant" : "smooth" });
+  /* always instant on nav — feels like a real page change, not a scroll within one long page */
+  window.scrollTo({ top: 0, behavior: "instant" });
   // close mobile menu
   document.body.classList.remove("menu-open");
   document.getElementById("mobileMenu").setAttribute("aria-hidden", "true");
