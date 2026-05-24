@@ -1132,8 +1132,9 @@ a.mini-card:hover { border-color: var(--accent); transform: translateY(-2px); }
 
 /* ────────────────────────── CTA BAND ────────────────────────── */
 .cta-band {
-  background: var(--ink);
-  color: var(--bg);
+  /* always-dark band, regardless of theme — text colors are hard-set below */
+  background: #14181F;
+  color: #F4EFE6;
   border-radius: 28px;
   padding: clamp(40px, 6vw, 70px);
   display: grid;
@@ -1143,22 +1144,28 @@ a.mini-card:hover { border-color: var(--accent); transform: translateY(-2px); }
   position: relative;
   overflow: hidden;
 }
-[data-theme="dark"] .cta-band { background: var(--bg-deep); }
+[data-theme="dark"] .cta-band {
+  background: #1E2532;
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+}
 .cta-band::before {
   content: "";
   position: absolute;
   inset: auto -10% -40% auto;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(180, 71, 31, 0.4), transparent 60%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 40%, transparent), transparent 60%);
   pointer-events: none;
 }
-.cta-band h2 { color: var(--bg); margin: 0; max-width: 14ch; }
-.cta-band p { color: color-mix(in srgb, var(--bg) 75%, transparent); margin: 14px 0 0; max-width: 38ch; }
+.cta-band h2 { color: #FBF7EE; margin: 0; max-width: 14ch; }
+.cta-band p { color: rgba(251, 247, 238, 0.78); margin: 14px 0 0; max-width: 38ch; }
 .cta-band .actions { display: flex; gap: 14px; flex-wrap: wrap; }
-.cta-band .btn-primary { background: var(--accent); }
-.cta-band .btn-ghost { color: var(--bg); border-color: color-mix(in srgb, var(--bg) 30%, transparent); }
-.cta-band .btn-ghost:hover { background: color-mix(in srgb, var(--bg) 12%, transparent); }
+.cta-band .btn-primary { background: var(--accent); color: #FBF7EE; }
+.cta-band .btn-primary:hover { background: var(--accent-deep); }
+.cta-band .btn-ghost { color: #FBF7EE; border-color: rgba(251, 247, 238, 0.3); }
+.cta-band .btn-ghost:hover { background: rgba(251, 247, 238, 0.12); }
+[data-theme="dark"] .cta-band .btn-primary { background: var(--gold); color: #14181F; }
+[data-theme="dark"] .cta-band .btn-primary:hover { background: var(--gold-soft); }
 
 /* ────────────────────────── FOOTER ────────────────────────── */
 .site-footer {
@@ -1807,19 +1814,6 @@ a.mini-card:hover { border-color: var(--accent); transform: translateY(-2px); }
     </div>
   </section>
 
-  <section class="section compact">
-    <div class="wrap">
-      <div class="cta-band fade-up">
-        <div>
-          <h2>Let’s walk your property.</h2>
-          <p>Every yard is different. We don’t do one-size-fits-all pricing — every quote is built around your land, your materials, and your vision.</p>
-        </div>
-        <div class="actions">
-          <a href="tel:+17816322285" class="btn btn-primary btn-large">📞 (781) 632-2285</a>
-        </div>
-      </div>
-    </div>
-  </section>
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════
